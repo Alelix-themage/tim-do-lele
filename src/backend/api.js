@@ -17,6 +17,10 @@ app.get('/consulta-users', async (req, res) => {
     }
 });
 
+app.get('/pedidos', async (req, res)=>{
+    
+})
+
 app.post('/inserir-users', async (req, res) => {
     try {
         res.status(200).send("Dados enviados com sucesso.")
