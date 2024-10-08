@@ -25,6 +25,6 @@ async function InserirUser(email, usuario, senha){
         }
     }) 
 }
-
-
+    
 module.exports = { InserirUser }
+

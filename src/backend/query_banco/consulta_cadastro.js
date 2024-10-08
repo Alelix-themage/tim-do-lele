@@ -1,32 +1,27 @@
-
-const { ConfigBanco } = require('./config_banco.js'); 
+const { ConfigBanco } = require('./config_banco.js');
 
 function ConsultarUsers() {
-    //Função responsável por consultar a tabela users
-    let users = [];//responsável por guardar os registros de user
-
+    // Função responsável por consultar a tabela users
     const db = ConfigBanco();
     
     return new Promise((resolve, reject) => {
-        db.all('SELECT * FROM users', users, (error, rows) => {
+        db.all('SELECT * FROM users', (error, rows) => {  // Removi 'users' daqui
             if (error) {
                 console.error("Erro ao consultar a tabela users:", error.message);
                 reject(error);
             } else {
                 console.log("Elementos da tabela usuarios encontrados com sucesso!", rows);
 
-                  // Imprime cada usuário encontrado
+                // Imprime cada usuário encontrado
                 rows.forEach(user => {
                     console.log(user);
                 });
-               
 
-                resolve(rows);
+                resolve(rows);  // Resolve a promise com as linhas da tabela
                 console.log("Registros encontrados:", rows);
             }
         });
     });
-    
 }
 
 ConsultarUsers()
@@ -37,5 +32,4 @@ ConsultarUsers()
         console.error("Erro ao consultar usuários:", err);
     });
 
-
-module.exports = { ConsultarUsers }
+module.exports = { ConsultarUsers };
