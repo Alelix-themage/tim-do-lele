@@ -1,6 +1,7 @@
 // Módulo responsável por configurar as rotas da API
 const express = require('express');
 const { ConsultarUsers } = require('./query_banco/consulta_cadastro.js');
+const {InserirUser} = require('./query_banco/inserir_cadastro.js')
 
 const app = express();
 
@@ -17,13 +18,21 @@ app.get('/consulta-users', async (req, res) => {
     }
 });
 
-app.get('/pedidos', async (req, res)=>{
-    
-})
+// app.get('/pedidos', async (req, res)=>{
+//     try {
+//         const pedidos;
+//         res.status(200).json(users);
+//     }
+//     catch(erro){
+
+//     }
+// })
 
 app.post('/inserir-users', async (req, res) => {
     try {
-        res.status(200).send("Dados enviados com sucesso.")
+        data = req.body
+        InserirUser(data[0], data[1], data[2])
+        res.status(200).send("Dados enviados com sucesso.") 
     }
     catch(erro){
         res.status(500).send("Falha ao enviar os dados.")

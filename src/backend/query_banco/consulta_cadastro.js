@@ -1,11 +1,11 @@
 const { ConfigBanco } = require('./config_banco.js');
 
-function ConsultarUsers() {
+function  ConsultarUsers() {
     // Função responsável por consultar a tabela users
     const db = ConfigBanco();
     
     return new Promise((resolve, reject) => {
-        db.all('SELECT * FROM users', (error, rows) => {  // Removi 'users' daqui
+        db.all('SELECT * FROM USERS', (error, rows) => {  // Removi 'users' daqui
             if (error) {
                 console.error("Erro ao consultar a tabela users:", error.message);
                 reject(error);
@@ -25,11 +25,5 @@ function ConsultarUsers() {
 }
 
 ConsultarUsers()
-    .then(users => {
-        console.log("Usuários encontrados:", users);
-    })
-    .catch(err => {
-        console.error("Erro ao consultar usuários:", err);
-    });
 
 module.exports = { ConsultarUsers };

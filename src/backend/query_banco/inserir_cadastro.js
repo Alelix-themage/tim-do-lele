@@ -6,7 +6,7 @@ async function InserirUser(email, usuario, senha){
     //Função Responsável por Inserir os dados de acesso do usuário na tabela
     const db = ConfigBanco();
 
-    sqlInsert = `INSERT INTO users (EMAIL, USUARIO, SENHA) VALUES (?, ?, ?)`;
+    sqlInsert = `INSERT INTO USERS (EMAIL, USUARIO, SENHA) VALUES (?, ?, ?)`;
     db.run(sqlInsert, [email, usuario, senha], function(err) {
         if (err) {
             console.error('Erro ao inserir dados: ' + err.message);
