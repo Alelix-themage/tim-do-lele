@@ -14,24 +14,24 @@ export const routes: Routes = [
     {
         path: 'home',
         component: HomeComponent,
-        title: "Home"
+        title: "Tim do Lelê - Página Inicial"
     },
 
     {
         path: 'login',
         component: TelaLoginComponent,
-        title: 'Login'
+        title: 'Tim do Lelê - Login'
     },
 
     {
         path: 'cadastro',
         component: TelaCadastroComponent,
-        title: 'cadastro'
+        title: 'Tim do Lelê - Cadastro'
     },
 
     {
         path: "admin",
         component: AdminComponent,
-        title: "Admin",
+        title: "Tim do Lelê - Admin",
     },
 ];

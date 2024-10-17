@@ -1,0 +1,63 @@
+/*=============== IMPORTAR FONTE ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== CORES ==========*/
+  --yellow-color: rgb(250,202,4);
+  --white-color: hsl(0, 0%, 100%);
+  --black-color: hsl(0, 0%, 0%);
+  /*========== FONTE ==========*/
+  --body-font: "Poppins", sans-serif;
+  --h1-font-size: 3rem;
+  --normal-font-size: 1rem;
+  --small-font-size: .813rem;
+  /*========== ESPESSURA FONTE ==========*/
+  --font-medium: 500;
+}
+
+/* Variáveis de estilo */
+$white-color: white;
+$background-image: url('assets/img/bg.png');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.background {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: $background-image; 
+    background-size: cover;
+    background-position: center;
+
+    .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); 
+        text-align: center; 
+        color: $white-color; // Cor do texto
+
+        a {
+            color: $white-color; // Cor dos links
+            text-decoration: none; // Remove o sublinhado
+            margin: 10px 0; // Espaçamento entre os links
+
+            &:hover {
+                text-decoration: underline; // Sublinha ao passar o mouse
+            }
+        }
+    }
+}
+
+body,
+input,
+button {
+	font-size: var(--normal-font-size);
+	font-family: var(--body-font);
+}
