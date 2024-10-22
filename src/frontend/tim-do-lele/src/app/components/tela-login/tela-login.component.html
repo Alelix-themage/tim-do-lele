@@ -1,43 +1,43 @@
 <section >
-    <div class="login">
+    <div class="form">
       <img src="assets/img/bg.png" class="bg">
       <a href="/home"><i class="ri-home-2-fill home__icon"></i></a>
-      <form action="" class="login__form" #loginForm="ngForm" (ngSubmit)="validarlogin(loginForm)">
-        <h1 class="login__title">Seja bem-vindo(a)!</h1>
-        <a href="/home"><img  class="login__logo" src="assets/img/logo-tim.png"></a>
-        <div class="login__content">
-          <div class="login__box">
-            <i class="ri-user-3-line login__icon"></i>
-            <div class="login__box-input">
-              <input type="email" required class="login__input" id="login-email" name="email" ngModel placeholder=" ">
-              <label for="login-email" class="login__label">Email</label>
+      <form action="" class="form__form" #loginForm="ngForm" (ngSubmit)="validarlogin(loginForm)">
+        <h1 class="form__title">Seja bem-vindo(a)!</h1>
+        <a href="/home"><img  class="form__logo" src="assets/img/logo-tim.png"></a>
+        <div class="form__content">
+          <div class="form__box">
+            <i class="ri-user-3-line form__icon"></i>
+            <div class="form__box-input">
+              <input type="email" required class="form__input" id="form-email" name="email" ngModel placeholder=" ">
+              <label for="form-email" class="form__label">Email</label>
             </div>
           </div>
 
-          <div class="login__box">
-            <i class="ri-lock-2-line login__icon"></i>
-            <div class="login__box-input">
-              <input type="password" required class="login__input" id="login-pass" name="password" ngModel placeholder=" ">
-              <label for="login-pass" class="login__label">Senha</label>
-              <i class="ri-eye-off-line login__eye" id="login-eye"></i>
+          <div class="form__box">
+            <i class="ri-lock-2-line form__icon"></i>
+            <div class="form__box-input">
+              <input type="password" required class="form__input" id="login-pass" name="password" ngModel placeholder=" ">
+              <label for="login-pass" class="form__label">Senha</label>
+              <i class="ri-eye-off-line form__eye" id="login-eye" (click)="showHiddenPass('login-pass', 'login-eye')"></i>
             </div>
           </div>
         </div>
   
-        <div class="login__check">
-          <div class="login__check-group">
-            <input type="checkbox" class="login__check-input" id="login-check">
-            <label for="login-check" class="login__check-label">Mantenha-me conectado</label>
+        <div class="form__check">
+          <div class="form__check-group">
+            <input type="checkbox" class="form__check-input" id="login-check">
+            <label for="login-check" class="form__check-label">Mantenha-me conectado</label>
           </div>
   
-          <a href="#" class="login__forgot">Esqueceu sua senha?</a> <!-- IMPLEMENTAR TELA DE RECUPERAÇÃO A SENHA-->
+          <a href="#" class="form__forgot">Esqueceu sua senha?</a> <!-- IMPLEMENTAR TELA DE RECUPERAÇÃO A SENHA-->
           
         </div>
   
         
-        <button type="submit" class="submit__button">Login</button>
+        <button type="submit" class="form__submit__button">Login</button>
 
-        <p class="login__register">
+        <p class="form__register">
           Não tem uma conta? <a href="/cadastro">Registre-se</a>
         </p>
       </form>

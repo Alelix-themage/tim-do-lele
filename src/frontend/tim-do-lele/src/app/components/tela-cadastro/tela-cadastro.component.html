@@ -1,52 +1,59 @@
 <section>
     <section >
-        <div class="login">
+        <div class="form">
           <img src="assets/img/bg.png" class="bg">
           <a href="/home"><i class="ri-home-2-fill home__icon"></i></a>
-          <form action="" class="login__form">
-            <h1 class="login__title">Crie sua conta!</h1>
-            <a href="/home"><img  class="login__logo" src="assets/img/logo-tim.png"></a>
+          <form action="" class="form__form">
+            <h1 class="form__title">Crie sua conta</h1>
+            <a href="/home"><img  class="form__logo" src="assets/img/logo-tim.png"></a>
 
-            <div class="login__content">
-
-              <div class="login__box">
-                <i class="ri-user-3-line login__icon"></i>
-                <div class="login__box-input">
-                    <input type="text" required class="login__input" id="login-email" name="email" ngModel placeholder=" ">
-                    <label for="login-email" class="login__label">Nome</label>
+            <div class="form__content">
+              <div class="form__box">
+                <i class="ri-user-3-line form__icon"></i>
+                <div class="form__box-input">
+                    <input type="text" required class="form__input" id="register-name" name="name" ngModel placeholder=" ">
+                    <label for="form-email" class="form__label">Nome</label>
                 </div>
               </div>
 
-              <div class="login__box">
+              <div class="form__box">
+                <i class="ri-phone-line"></i>
+                <div class="form__box-input">
+                    <input type="tel" required class="form__input" id="register-name" name="name" ngModel placeholder="">
+                    <label for="form-email" class="form__label">Telefone</label>
+                </div>
+              </div>
+
+              <div class="form__box">
                 <i class="ri-mail-line"></i>
-                <div class="login__box-input">
-                  <input type="email" required class="login__input" id="login-email" name="email" ngModel placeholder=" ">
-                  <label for="login-email" class="login__label">Email</label>
+                <div class="form__box-input">
+                  <input type="email" required class="form__input" id="register-email" name="email" ngModel placeholder=" ">
+                  <label for="form-email" class="form__label">Email</label>
                 </div>
               </div>
 
-              <div class="login__box">
-                <i class="ri-lock-2-line login__icon"></i>
-                <div class="login__box-input">
-                  <input type="password" required class="login__input" id="register-pass" name="password" ngModel placeholder=" ">
-                  <label for="login-pass" class="login__label">Senha</label>
-                  <i class="ri-eye-off-line login__eye" id="login-eye"></i>
+              <div class="form__box">
+                <i class="ri-lock-2-line form__icon"></i>
+                <div class="form__box-input">
+                  <input type="password" required class="form__input" id="register-pass" name="password" ngModel placeholder=" ">
+                  <label for="login-pass" class="form__label">Senha</label>
+                  <i class="ri-eye-off-line form__eye" id="form-eye" (click)="showHiddenPass('register-pass', 'form-eye')"></i>
                 </div>
               </div>
 
-              <div class="login__box">
-                <i class="ri-lock-2-line login__icon"></i>
-                <div class="login__box-input">
-                  <input type="password" required class="login__input" id="register-confirm-pass" name="password" ngModel placeholder=" ">
-                  <label for="login-pass" class="login__label">Confirme sua senha</label>
-                  <i class="ri-eye-off-line login__eye" id="login-eye"></i>
+              <div class="form__box">
+                <i class="ri-lock-2-line form__icon"></i>
+                <div class="form__box-input">
+                  <input type="password" required class="form__input" id="register-confirm-pass" name="password" ngModel placeholder=" ">
+                  <label for="form-pass" class="form__label">Confirme sua senha</label>
+                  <i class="ri-eye-off-line form__eye" id="form-eye 2" (click)="showHiddenPass('register-confirm-pass', 'form-eye 2')"></i>
                 </div>
               </div>
 
             </div>
       
       
-            <button type="submit" class="submit__button">Criar conta</button>
+            <button type="submit" class="form__submit__button">Criar conta</button>
           </form>
         </div>
     </section>

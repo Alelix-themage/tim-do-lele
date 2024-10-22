@@ -1,268 +1,303 @@
 /*=============== IMPORTAR FONTE ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
 /*=============== VARIABLES CSS ===============*/
 :root {
   /*========== CORES ==========*/
   --yellow-color: rgb(250,202,4);
   --white-color: hsl(0, 0%, 100%);
   --black-color: hsl(0, 0%, 0%);
+  
   /*========== FONTE ==========*/
-  /*.5rem = 8px | 1rem = 16px ...*/
   --body-font: "Poppins", sans-serif;
   --h1-font-size: 2rem;
   --normal-font-size: 1rem;
   --small-font-size: .813rem;
+
   /*========== ESPESSURA FONTE ==========*/
   --font-medium: 500;
 }
 
 /*=============== BASE ===============*/
 * {
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
-}
-
-
-input,
-section {
-	font-size: var(--normal-font-size);
-	font-family: var(--body-font);
-}
-
-section {
-	color: var(--white-color);
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 input,
 section {
-	border: none;
-	outline: none;
+  font-size: var(--normal-font-size);
+  font-family: var(--body-font);
+}
+
+section {
+  color: var(--white-color);
+}
+
+input,
+section {
+  border: none;
+  outline: none;
 }
 
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 img {
-	max-width: 100%;
-	height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
-
 /*=============== LOGIN ===============*/
-.login {
-    position: relative;
-    height: 100vh;
-    display: grid;
-    align-items: center;
-  }
-  .bg {
-    position: absolute;
+.form {
+  position: relative;
+  height: 100vh;
+  display: grid;
+  align-items: center;
+}
+
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.home__icon {
+  position: absolute; /* Coloca o ícone no canto superior esquerdo */
+  top: 1rem;
+  left: 1rem;
+  font-size: 2rem;
+  color: white;
+}
+
+#admin__icon {
+  font-size: 5rem;
+}
+
+.form__logo {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.form__form {
+  position: relative;
+  background-color: hsla(0, 0%, 10%, 0.1);
+  border: 2px solid var(--yellow-color);
+  margin-inline: 1.5rem;
+  padding: 2.5rem 1.5rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(8px);
+}
+
+.form__title {
+  text-align: center;
+  font-size: var(--h1-font-size);
+  font-weight: var(--font-medium);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.form__content, .form__box {
+  display: grid;
+}
+
+.form__content {
+  row-gap: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.form__box {
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+  column-gap: 1rem;
+  border-bottom: 1px solid var(--yellow-color);
+}
+
+.form__icon {
+  font-size: 1.25rem;
+}
+
+.form__input {
+  width: 100%;
+  padding-block: 0.5rem;
+  background: none;
+  color: var(--white-color);
+  position: relative;
+  z-index: 1;
+}
+
+.form__box-input {
+  position: relative;
+  width: 100%;
+}
+
+.form__label {
+  position: absolute;
+  left: 13px;
+  top: 5px;
+  font-weight: var(--font-medium);
+  transition: top 0.3s, font-size 0.3s;
+}
+
+.form__eye {
+  position: absolute;
+  right: 10px; /* Ajusta a distância do ícone da borda do input */
+  top: 50%;
+  transform: translateY(-50%); /* Centraliza verticalmente o ícone */
+  font-size: 1.25rem; /* Define um tamanho para o ícone */
+  z-index: 10;
+  cursor: pointer;
+}
+
+.form__box:nth-child(2) .form__input {
+  padding-right: 2.5rem; /* Adiciona espaço para o ícone do olho */
+}
+
+.form__check, .form__check-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form__check {
+  margin-bottom: 1.5rem;
+}
+
+.form__check-label, .form__forgot, .form__register {
+  font-size: var(--small-font-size);
+}
+
+.form__check-group {
+  column-gap: 0.5rem;
+}
+
+.form__check-input {
+  width: 16px;
+  height: 16px;
+}
+
+.form__forgot {
+  color: var(--white-color);
+}
+
+.form__forgot:hover {
+  text-decoration: underline;
+}
+
+.form__submit__button {
+  border: none;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--yellow-color);
+  font-weight: var(--font-medium);
+  font-family: "Poppins", sans-serif;
+  color: black;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.form__register {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form__register a {
+  color: var(--white-color);
+  font-weight: var(--font-medium);
+}
+
+.form__register a:hover {
+  text-decoration: underline;
+}
+
+/* MEXER EMAIL E SENHA PRA CIMA */
+
+.form__input:focus + .form__label{
+  top: -12px;
+  font-size: var(--small-font-size);
+}
+
+/* Input focus sticky top label */
+.form__input:not(:placeholder-shown).form__input:not(:focus) + .form__label{
+  top: -12px;
+  font-size: var(--small-font-size);
+}
+
+/*=============== HOME PAGE ===============*/
+.background {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
+  width: 100%;
+  height: 100vh;
+  background-image: url('/assets/img/bg.png');
+  background-size: cover;
+  background-position: center;
+  position: relative; /* Garante que elementos internos respeitem o tamanho da tela */
+
+  .content {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Alinha o conteúdo verticalmente no centro */
+    align-items: center; /* Alinha o conteúdo horizontalmente */
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-  .home__icon {
-    position: absolute; /* Coloca o ícone no canto superior esquerdo */
-    top: 1rem;
-    left: 1rem;
-    font-size: 2rem;
+    flex-grow: 1; /* Faz com que o conteúdo ocupe o espaço restante */
+    text-align: center;
     color: white;
+
+    a {
+      color: white;
+      text-decoration: none;
+      margin: 10px 0;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
-  .login__logo {
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* Telas médias */
+@media screen and (min-width: 576px) {
+  .form {
+    justify-content: center;
+  }
+
+  .form__form {
+    width: 432px;
+    padding: 2rem 1rem 1.5rem;
+    border-radius: 1.5rem;
+  }
+
+  .form__title {
+    font-size: 1.5rem;
+  }
+
+  .form__logo {
     display: block;
     margin: 0 auto;
-    max-width: 100%;
+    max-width: 40%;
     height: auto;
   }
-  .login__form {
-    position: relative;
-    background-color: hsla(0, 0%, 10%, 0.1);
-    border: 2px solid var(--yellow-color);
-    margin-inline: 1.5rem;
-    padding: 2.5rem 1.5rem;
-    border-radius: 1rem;
-    backdrop-filter: blur(8px);
+
+  .form__register {
+    text-align: center;
   }
-  .login__title {
+
+  .form__title {
     text-align: center;
     font-size: var(--h1-font-size);
     font-weight: var(--font-medium);
     margin-top: 2rem;
     margin-bottom: 1rem;
   }
-  .login__content, .login__box {
-    display: grid;
-  }
-  .login__content {
-    row-gap: 1.75rem;
-    margin-bottom: 1.5rem;
-  }
-  .login__box {
-    grid-template-columns: max-content 1fr;
-    align-items: center;
-    column-gap: 0.75rem;
-    border-bottom: 2px solid var(--yellow-color);
-  }
-  .login__icon, .login__eye {
-    font-size: 1.25rem;
-  }
-  .login__input {
-    width: 100%;
-    padding-block: 0.8rem;
-    background: none;
-    color: var(--white-color);
-    position: relative;
-    z-index: 1;
-  }
-  .login__box-input {
-    position: relative;
-  }
-  .login__label {
-    position: absolute;
-    left: 0;
-    top: 13px;
-    font-weight: var(--font-medium);
-  
-    transition: top 0.3s, font-size 0.3s;
-  }
-  .login__eye {
-    position: absolute;
-    right: 0;
-    top: 18px;
-    z-index: 10;
-    cursor: pointer;
-  }
-  .login__box:nth-child(2) input {
-    padding-right: 1.8rem;
-  }
-  .login__check, .login__check-group {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .login__check {
-    margin-bottom: 1.5rem;
-  }
-  .login__check-label, .login__forgot, .login__register {
-    font-size: var(--small-font-size);
-  }
-  .login__check-group {
-    column-gap: 0.5rem;
-  }
-  .login__check-input {
-    width: 16px;
-    height: 16px;
-  }
-  .login__forgot {
-    color: var(--white-color);
-  }
-  .login__forgot:hover {
-    text-decoration: underline;
-  }
-  .submit__button {
-    border: none;
-    width: 100%;
-    padding: 1rem;
-    border-radius: 1rem;
-    background-color: var(--yellow-color);
-    font-weight: var(--font-medium);
-    font-family: "Poppins", sans-serif;
-    color: black;
-    cursor: pointer;
-    margin-bottom: 2rem;
-  }
-  .login__register {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  .login__register a {
-    color: var(--white-color);
-    font-weight: var(--font-medium);
-  }
-  .login__register a:hover {
-    text-decoration: underline;
-  }
-  
-  /* MEXER EMAIL E SENHA PRA CIMA */
-  .login__input:focus + .login__label {
-    top: -12px;
-    font-size: var(--small-font-size);
-  }
-  
-  /* MEXER EMAIL E SENHA PRA CIMA */
-  .login__input:not(:placeholder-shown).login__input:not(:focus) + .login__label {
-    top: -12px;
-    font-size: var(--small-font-size);
-  }
-
-  /*=============== HOME PAGE ===============*/
-
-  .background {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centraliza horizontalmente */
-    width: 100%;
-    height: 100vh;
-    background-image: url('/assets/img/bg.png');
-    background-size: cover;
-    background-position: center;
-    position: relative; /* Garante que elementos internos respeitem o tamanho da tela */
-
-    .content {
-        font-family: "Poppins", sans-serif;
-        display: flex;
-        flex-direction: column;
-        justify-content: center; /* Alinha o conteúdo verticalmente no centro */
-        align-items: center; /* Alinha o conteúdo horizontalmente */
-        width: 100%;
-        flex-grow: 1; /* Faz com que o conteúdo ocupe o espaço restante */
-        text-align: center;
-        color: white;
-
-        a {
-            color: white;
-            text-decoration: none;
-            margin: 10px 0;
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-    }
-    
 }
-
-/*=============== BREAKPOINTS ===============*/
-/* Telas medias */
-@media screen and (min-width: 576px) {
-    .login {
-      justify-content: center;
-    }
-    .login__form {
-      width: 432px;
-      padding: 2rem 1rem 1.5rem;
-      border-radius: 1.5rem;
-    }
-    .login__title {
-      font-size: 1.5rem;
-    }
-    .login__logo {
-      display: block;
-      margin: 0 auto;
-      max-width: 40%;
-      height: auto;
-    }
-    .login__register {
-       text-align: center;
-     }
-    .login__title {
-       text-align: center;
-       font-size: var(--h1-font-size);
-       font-weight: var(--font-medium);
-       margin-top: 2rem;
-       margin-bottom: 1rem;
-    }
-  }
