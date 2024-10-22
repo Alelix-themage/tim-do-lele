@@ -4,8 +4,8 @@ function  ConsultarLanches() {
     // Função responsável por consultar a tabela users
     const db = ConfigBanco();
     
-    return ((resolve, reject) => {
-        db.all('SELECT * FROM LANCHES', (error, rows) => {  // Removi 'users' daqui
+    return new Promise ((resolve, reject) => {
+        db.all('SELECT * FROM LANCHES', (error, rows) => {  
             if (error) {
                 console.error("Erro ao consultar a tabela users:", error.message);
                 reject(error);
@@ -14,7 +14,7 @@ function  ConsultarLanches() {
 
                 // Imprime cada usuário encontrado
                 rows.forEach(lanche => {
-                    console.log(lanches);
+                    console.log(lanche);
                 });
 
                 resolve(rows);  // Resolve a promise com as linhas da tabela

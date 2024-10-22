@@ -2,6 +2,7 @@
 const express = require('express');
 const { ConsultarUsers } = require('./query_banco/consulta_cadastro.js');
 const {InserirUser} = require('./query_banco/inserir_cadastro.js')
+const {ConsultarLanches} = require('./query_banco/consulta_lanches.js')
 
 const app = express();
 
@@ -18,15 +19,15 @@ app.get('/consulta-users', async (req, res) => {
     }
 });
 
-// app.get('/pedidos', async (req, res)=>{
-//     try {
-//         const pedidos;
-//         res.status(200).json(users);
-//     }
-//     catch(erro){
+app.get('/pedidos', async (req, res)=>{
+    try {
+        const lanches = await ConsultarLanches();
+        res.status(200).json(lanches);
+    }
+    catch(erro){
 
-//     }
-// })
+    }
+})
 
 app.post('/inserir-users', async (req, res) => {
     try {
