@@ -23,19 +23,19 @@
 	margin: 0;
 }
 
-body,
+
 input,
-button {
+section {
 	font-size: var(--normal-font-size);
 	font-family: var(--body-font);
 }
 
-body {
+section {
 	color: var(--white-color);
 }
 
 input,
-button {
+section {
 	border: none;
 	outline: none;
 }
