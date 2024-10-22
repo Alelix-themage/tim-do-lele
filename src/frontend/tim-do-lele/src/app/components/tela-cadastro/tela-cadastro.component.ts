@@ -66,6 +66,7 @@ export class TelaCadastroComponent implements OnInit {
         error: (erro) => {
           console.error("Erro ao enviar cadastro ao backend.", erro)
           alert("Erro ao realizar o cadastro!")
+          form.reset();
         }
       })
     }

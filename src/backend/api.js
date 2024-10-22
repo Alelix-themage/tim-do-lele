@@ -46,10 +46,10 @@ app.post('/enviar-cadastro', async (req, res) => {
     try {
         data = req.body;
         InserirUser(data.email, data.nome, data.senha, data.telefone)
-        res.status(200).send("Dados enviados com sucesso.") 
+        res.status(200).json({message: "Dados enviados com sucesso."}) 
     }
     catch(erro){
-        res.status(500).send("Falha ao enviar os dados.")
+        res.status(400).send({message: "Falha ao enviar os dados."})
     }
 })
 
