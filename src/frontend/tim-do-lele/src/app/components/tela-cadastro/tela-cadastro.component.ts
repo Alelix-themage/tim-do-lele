@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, RouterOutlet } from '@angular/router';
+import Swal from 'sweetalert2';
 
 //services
 import { CadastroService } from 'app/service/cadastro.service';
@@ -60,8 +61,7 @@ export class TelaCadastroComponent implements OnInit {
       this.cadastroService.postDataCadastro(data).subscribe({
         next: (dados) => {
           console.log("Dados enviados com sucesso!")
-          alert(dados.message); // mensagem enviada ao backend
-          form.reset()
+          mostrarAlert(form)
         },
         error: (erro) => {
           console.error("Erro ao enviar cadastro ao backend.", erro)
@@ -107,3 +107,13 @@ export class TelaCadastroComponent implements OnInit {
 function IsEmptyVar(value : any) : boolean  {
   return value === null || value == undefined || (typeof value === "string" && value.trim() == '')
 } 
+
+function mostrarAlert(form: any) : void {
+  Swal.fire({
+    title: 'Parabéns!',
+    text: 'Seu cadastro foi concluído com suceso!',
+    icon: 'success',
+    confirmButtonText: 'Ok'
+  });
+  form.reset()
+}
