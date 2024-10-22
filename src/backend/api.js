@@ -1,5 +1,6 @@
 // Módulo responsável por configurar as rotas da API
 const express = require('express');
+const cors = require('cors')
 const { ConsultarUsers } = require('./query_banco/consulta_cadastro.js');
 const {InserirUser} = require('./query_banco/inserir_cadastro.js')
 const {ConsultarLanches} = require('./query_banco/consulta_lanches.js')
@@ -7,6 +8,18 @@ const {ConsultarLanches} = require('./query_banco/consulta_lanches.js')
 const app = express();
 
 const PORT = 8000;
+
+
+app.use(cors({
+    // Cors serve para conectar portas diferentes
+    origin: 'http://localhost:4200', 
+    methods: ['GET', 'POST', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'], 
+  }));
+  
+// Middleware para interpretar JSON
+app.use(express.json());
+
 
 app.get('/consulta-users', async (req, res) => {
     //Endpoint responsável por consultar users
@@ -29,10 +42,10 @@ app.get('/pedidos', async (req, res)=>{
     }
 })
 
-app.post('/inserir-users', async (req, res) => {
+app.post('/enviar-cadastro', async (req, res) => {
     try {
-        data = req.body
-        InserirUser(data[0], data[1], data[2])
+        data = req.body;
+        InserirUser(data.email, data.nome, data.senha, data.telefone)
         res.status(200).send("Dados enviados com sucesso.") 
     }
     catch(erro){
