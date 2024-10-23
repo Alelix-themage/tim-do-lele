@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { TelaLoginComponent } from './components/tela-login/tela-login.component';
 import { TelaCadastroComponent } from './components/tela-cadastro/tela-cadastro.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 export const routes: Routes = [
     {
@@ -33,5 +34,11 @@ export const routes: Routes = [
         path: "admin",
         component: AdminComponent,
         title: "Tim do Lelê - Admin",
+    },
+
+    {
+        path: "navbar",
+        component: NavbarComponent,
+        title: "Tim do Lelê - Navbar",
     },
 ];
