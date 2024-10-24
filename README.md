@@ -6,5 +6,8 @@ tecnologias necessárias:
     express, 
     sqlite
     CORS
+    crypto-js
+    
 }
 - Angular 
+sweetAlert2
