@@ -11,37 +11,42 @@
                     <div class="form__box-input">
                         <input type="email" required class="form__input" id="login-email" name="email" ngModel placeholder=" ">
                         <label for="login-email" class="form__label">Email</label>
+                        <div *ngIf="loginForm.controls['email']?.invalid && loginForm.controls['email']?.touched" class="error-message">
+                            <small>Email inválido.</small>
+                        </div>
                     </div>
                 </div>
-  
+
                 <div class="form__box">
                     <i class="ri-lock-2-line form__icon"></i>
                     <div class="form__box-input">
                         <input type="password" required class="form__input" id="login-pass" name="password" ngModel placeholder=" ">
                         <label for="login-pass" class="form__label">Senha</label>
                         <i class="ri-eye-off-line form__eye" id="login-eye"></i>
+                        <div *ngIf="loginForm.controls['password']?.invalid && loginForm.controls['password']?.touched" class="error-message">
+                            <small>A senha é obrigatória.</small>
+                        </div>
                     </div>
                 </div>
             </div>
-  
+
             <div class="form__check">
                 <div class="form__check-group">
                     <input type="checkbox" class="form__check-input" id="login-check">
                     <label for="login-check" class="form__check-label">Mantenha-me conectado</label>
                 </div>
-  
+
                 <a href="#" class="form__forgot">Esqueceu sua senha?</a>
             </div>
-  
-            <button type="submit" class="form__submit__button">Login</button>
-  
+
+            <button type="submit" class="form__submit__button" [disabled]="loginForm.invalid">Login</button>
+
             <p class="form__register">
                 Não tem uma conta? <a href="/cadastro">Registre-se</a>
             </p>
         </form>
     </div>
-  </section>
-  
-  <!--=============== IMPORTAR ICONES ===============-->
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-  
+</section>
+
+<!--=============== IMPORTAR ICONES ===============-->
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">

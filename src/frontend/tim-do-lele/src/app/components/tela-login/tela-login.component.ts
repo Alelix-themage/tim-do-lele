@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgForm, FormsModule } from '@angular/forms';
 
+//services
+import { AutenticarService } from 'app/service/autenticar-login.service';
+
 @Component({
   selector: 'app-tela-login',
   standalone: true,
@@ -11,7 +14,42 @@ import { NgForm, FormsModule } from '@angular/forms';
 })
 
 export class TelaLoginComponent {
-  constructor() {}
+  constructor(
+    private autenticarService: AutenticarService
+  ) {}
+
+  credenciais: any [] = [];
+  email: string |undefined;
+  senha: string | undefined;
+
+  // Método para validar login
+  validarlogin(form: NgForm) {
+    if (form.invalid) {
+      // Se o formulário for inválido, você pode exibir uma mensagem de erro
+      console.log('Formulário inválido!');
+      return;
+    }
+
+    // Aqui você pode adicionar a lógica para enviar os dados de login
+    // console.log('Email:', form.value.email);
+    // console.log('Senha:', form.value.password);
+
+    // Exemplo: enviar os dados para o backend[]
+    this.email = form.value.email
+    this.senha = form.value.senha
+    this.credenciais = [form.value.email, form.value.password]
+    this.autenticarService.getLogin(this.credenciais).subscribe( {
+        next: (data) => {
+          console.log("Logado com sucesso")
+        },
+        error: (erro) => {
+          console.error("Erro logar na conta.")
+        }
+      });
+  }
+
+
+
 
   showHiddenPass(inputId: string, iconId: string): void {
     const input = document.getElementById(inputId) as HTMLInputElement;
@@ -36,15 +74,4 @@ export class TelaLoginComponent {
     }
   }
 
-  validarlogin(form: NgForm): void {
-    // Verifica se o formulário é válido
-    if (form.valid) {
-      console.log('Formulário válido');
-      // Aqui você pode adicionar a lógica de login
-      console.log('Email:', form.value.email);
-      console.log('Senha:', form.value.password);
-    } else {
-      console.log('Formulário inválido');
-    }
-  }
 }

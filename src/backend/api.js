@@ -45,6 +45,21 @@ app.get('/pedidos', async (req, res)=>{
     }
 })
 
+app.get('/autenticar-login', async (req, res) =>{
+    try {
+        const credenciais = req.body;
+        email = credenciais[0]
+        res.status(200).send('Credenciais de acesso recebidas com sucesso.')
+        console.log(`Credenciais de acesso
+                Login: ${credenciais.form.value.email}
+                Senha: ${credenciais[1]}
+            `)
+    }
+    catch{
+        console.error("Erro ao logar na conta!")
+    }
+})
+
 app.post('/enviar-cadastro', async (req, res) => {
     try {
         data = req.body;
