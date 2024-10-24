@@ -48,7 +48,7 @@ app.get('/pedidos', async (req, res)=>{
 app.post('/enviar-cadastro', async (req, res) => {
     try {
         data = req.body;
-        senha = CriptografarSenha(data.senha)
+        senha = await CriptografarSenha(data.senha)
         InserirUser(data.email, data.nome, senha, data.telefone)
         res.status(200).json({message: "Dados enviados com sucesso."}) 
     }
