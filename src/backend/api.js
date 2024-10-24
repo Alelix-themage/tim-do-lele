@@ -51,7 +51,7 @@ app.get('/autenticar-login', async (req, res) =>{
         email = credenciais[0]
         res.status(200).send('Credenciais de acesso recebidas com sucesso.')
         console.log(`Credenciais de acesso
-                Login: ${credenciais.form.value.email}
+                Login: ${credenciais[0]}
                 Senha: ${credenciais[1]}
             `)
     }
