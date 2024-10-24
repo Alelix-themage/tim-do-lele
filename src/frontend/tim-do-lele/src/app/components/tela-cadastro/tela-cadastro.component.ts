@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 //services
 import { CadastroService } from 'app/service/cadastro.service';
-import { routes } from 'app/app.routes';
+
 
 
 @Component({

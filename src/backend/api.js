@@ -5,6 +5,9 @@ const { ConsultarUsers } = require('./query_banco/consulta_cadastro.js');
 const {InserirUser} = require('./query_banco/inserir_cadastro.js')
 const {ConsultarLanches} = require('./query_banco/consulta_lanches.js')
 
+//criptografia da senha
+const {CriptografarSenha} = require('./cipher.js')
+
 const app = express();
 
 const PORT = 8000;
@@ -45,7 +48,8 @@ app.get('/pedidos', async (req, res)=>{
 app.post('/enviar-cadastro', async (req, res) => {
     try {
         data = req.body;
-        InserirUser(data.email, data.nome, data.senha, data.telefone)
+        senha = CriptografarSenha(data.senha)
+        InserirUser(data.email, data.nome, senha, data.telefone)
         res.status(200).json({message: "Dados enviados com sucesso."}) 
     }
     catch(erro){
