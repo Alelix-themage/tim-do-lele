@@ -36,9 +36,9 @@ export class TelaLoginComponent {
 
     // Exemplo: enviar os dados para o backend[]
     this.email = form.value.email
-    this.senha = form.value.senha
+    this.senha = form.value.password
     this.credenciais = [this.email, this.senha]
-    this.autenticarService.getLogin(this.credenciais).subscribe( {
+    this.autenticarService.postLogin(this.credenciais).subscribe( {
         next: (data) => {
           console.log("Logado com sucesso")
         },

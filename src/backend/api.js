@@ -45,7 +45,7 @@ app.get('/pedidos', async (req, res)=>{
     }
 })
 
-app.get('/autenticar-login', async (req, res) =>{
+app.post('/autenticar-login', async (req, res) =>{
     try {
         const credenciais = req.body;
         email = credenciais[0]

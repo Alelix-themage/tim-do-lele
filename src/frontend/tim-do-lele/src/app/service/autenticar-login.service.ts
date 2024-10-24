@@ -9,8 +9,8 @@ export class AutenticarService {
 
   constructor(private http: HttpClient) {}
 
-  getLogin(data: any): Observable<any>{
+  postLogin(data: any): Observable<any>{
     const url = 'http://localhost:8000/autenticar-login';
-    return this.http.get(url, data);
+    return this.http.post(url, data);
   }
 }
