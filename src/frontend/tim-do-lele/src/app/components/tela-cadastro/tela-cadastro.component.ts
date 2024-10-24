@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 //services
 import { CadastroService } from 'app/service/cadastro.service';
+import { routes } from 'app/app.routes';
+
 
 @Component({
   selector: 'app-tela-cadastro',
@@ -21,7 +23,8 @@ export class TelaCadastroComponent implements OnInit {
   telefone: string |  undefined
 
   constructor(
-    private cadastroService: CadastroService
+    private cadastroService: CadastroService,
+    private router: Router
   ){}
 
   ngOnInit(): void {
@@ -62,6 +65,7 @@ export class TelaCadastroComponent implements OnInit {
         next: (dados) => {
           console.log("Dados enviados com sucesso!")
           mostrarAlert(form)
+          this.router.navigate(['/home'])
         },
         error: (erro) => {
           console.error("Erro ao enviar cadastro ao backend.", erro)
