@@ -50,9 +50,11 @@ app.post('/autenticar-login', async (req, res) =>{
         const credenciais = req.body;
         email = credenciais[0]
         res.status(200).send('Credenciais de acesso recebidas com sucesso.')
+        senha = await CriptografarSenha(credenciais[1])
+
         console.log(`Credenciais de acesso
                 Login: ${credenciais[0]}
-                Senha: ${credenciais[1]}
+                Senha: ${senha}
             `)
     }
     catch{

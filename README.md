@@ -6,8 +6,10 @@ tecnologias necessárias:
     express, 
     sqlite
     CORS
-    crypto-js
+    crypto-js,
+    passport.js
     
 }
 - Angular 
 sweetAlert2
+primeng
