@@ -1,6 +1,8 @@
-<div *ngFor="let lanche of lanches">
-    <br>
-    <h3>{{ lanche.NOME }}</h3>
-    <p>Preço: {{ lanche.PRECO }}</p>
-    <img src="../../../../assets/img/hamburguer.jpg" alt="" style="width: 80px;">
+<div *ngFor="let lanche of lanches" class="card mb-4" style="border: none; width: 300px; margin: auto;">
+    <div class="card-body text-center">
+        <img src="../../../../assets/img/lanche.png" alt="{{ lanche.NOME }}" class="img-fluid" style="width: 80px; height: auto; margin-bottom: 10px;">
+        <h3 class="card-title">{{ lanche.NOME }}</h3>
+        <p class="card-text">Preço: R$ {{ lanche.PRECO.toFixed(2).replace('.', ',') }}</p>
+        <button class="btn btn-danger">Adicionar ao Carrinho</button>
+    </div>
 </div>
