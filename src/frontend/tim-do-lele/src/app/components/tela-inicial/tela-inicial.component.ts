@@ -1,29 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-//service
-import { GetFoodService } from 'app/service/get-food.service';
+import { CardFoodComponent } from './card-food/card-food.component';
 
-//modelo
-import { Food } from '../Food.model';
 
 @Component({
   selector: 'app-tela-inicial',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CardFoodComponent],
   templateUrl: './tela-inicial.component.html',
   styleUrl: './tela-inicial.component.scss'
 })
-export class TelaInicialComponent implements OnInit {
-  constructor(
-    private getFood: GetFoodService,
-  ){}
+export class TelaInicialComponent  {
 
-  lanches: Food[] = []
-
-  ngOnInit(): void {
-      this.getFood.getDataFood().subscribe( data => {
-          this.lanches = data
-      }
-  )}
 
 }

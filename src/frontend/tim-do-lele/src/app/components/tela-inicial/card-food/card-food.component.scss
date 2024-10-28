@@ -1,0 +1,43 @@
+// Estilo básico para o container do card
+:host {
+    display: block;
+    margin: 16px; // Espaçamento entre os cards
+  }
+  
+  // Estilo para a imagem do lanche
+  img {
+    border-radius: 8px; // Bordas arredondadas
+    max-width: 100%; // Responsividade
+    height: auto; // Mantém a proporção
+  }
+  
+  // Estilo para o título do lanche
+  .text-lg {
+    font-size: 1.5rem; // Tamanho da fonte maior
+    color: #333; // Cor do texto
+  }
+  
+  // Estilo para o preço
+  .text-xl {
+    font-size: 1.25rem; // Tamanho da fonte
+    font-weight: bold; // Negrito
+    color: #1a73e8; // Cor do preço
+  }
+  
+  // Estilo para o botão
+  .p-button {
+    border-radius: 20px; // Bordas arredondadas nos botões
+  }
+  
+  // Estilo para o status do inventário
+  .status-tag {
+    position: absolute;
+    top: 10px; // Alinhamento do status
+    left: 10px; // Alinhamento do status
+    background-color: rgba(255, 255, 255, 0.8); // Fundo leve
+    padding: 4px 8px; // Espaçamento interno
+    border-radius: 15px; // Bordas arredondadas
+  }
+  
+  // Adicione estilos adicionais conforme necessário
+  

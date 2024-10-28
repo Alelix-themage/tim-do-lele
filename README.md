@@ -13,3 +13,4 @@ tecnologias necessárias:
 - Angular 
 sweetAlert2
 primeng
+ primeng primeicons
