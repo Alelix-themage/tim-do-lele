@@ -1,5 +1,7 @@
+//modelo do objeto lanche
+
 export interface Food {
-    id: number;
-    nome: string;
-    preco: string;
+    ID: number;
+    NOME: string;
+    PRECO: number;
 }

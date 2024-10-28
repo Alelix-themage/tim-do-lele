@@ -35,7 +35,7 @@ app.get('/consulta-users', async (req, res) => {
     }
 });
 
-app.get('/pedidos', async (req, res)=>{
+app.get('/lanches', async (req, res)=>{
     try {
         const lanches = await ConsultarLanches();
         res.status(200).json(lanches);
