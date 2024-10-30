@@ -14,3 +14,4 @@ tecnologias necessárias:
 sweetAlert2
 primeng
  primeng primeicons
+  npm install ag-grid-angular
