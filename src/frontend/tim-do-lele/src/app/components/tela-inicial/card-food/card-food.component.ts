@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataViewModule } from 'primeng/dataview';
-import { ButtonModule } from 'primeng/button';
-import { TagModule } from 'primeng/tag';
+
 
 //service
 import { GetFoodService } from 'app/service/get-food.service';
@@ -14,7 +12,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-card-food',
   standalone: true,
-  imports: [CommonModule, DataViewModule, ButtonModule, TagModule],
+  imports: [CommonModule],
   templateUrl: './card-food.component.html',
   styleUrl: './card-food.component.scss'
 })
