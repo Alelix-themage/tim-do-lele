@@ -1,10 +1,23 @@
-<div class="background">
-    <header class="header">
-        <a href="#" class="logo"> <img src="assets/img/logo-tim-header.png"></a>
-        <nav class="navbar"> 
-            <a href="#home">Inicio</a>
-            <a href="#lanches">Lanches</a>
-            <a href="#bebidas">Bebidas</a>
-        </nav>
-    </header>
-</div>
+<header class="header">
+    <a href="#" class="logo"> <img src="assets/img/logo-tim-header.png"></a>
+    <nav class="nav"> 
+        <a href="#home">Início</a>
+        <a href="#burgers">X-Burgers</a>
+        <a href="#hotdogs">Hotdogs</a>
+        <a href="#bebidas">Bebidas</a>
+    </nav>
+
+    <div class="icons">
+        <div class="ri-menu-line" id="menu-btn"></div>
+        <div class="ri-search-line" id="search-btn"></div>
+        <div class="ri-shopping-cart-line" id="cart-btn"></div>
+        <div class="ri-user-line" id="user-btn"></div>
+    </div>
+
+    <form action="" class="search-form">
+        <input type="search" id="search-box" placeholder="Pesquise aqui..." class="box">
+        <label for="search-box" class="ri-search-line" ></label>
+    </form>
+</header>
+
+<script defer src="navbar.component.ts"></script>
