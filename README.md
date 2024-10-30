@@ -14,3 +14,5 @@ tecnologias necessárias:
 sweetAlert2
 primeng
  primeng primeicons
+
+node --watch api.js
