@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardFoodComponent } from './card-food/card-food.component';
+import { CardFoodComponent } from '../card-food/card-food.component';
 
 
 @Component({
