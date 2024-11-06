@@ -1,6 +1,6 @@
 # Tim do Lele - Acompanhamento de Pedidos de Lanche
 
-<<<<<<< HEAD
+
 Este projeto visa oferecer um sistema de acompanhamento de pedidos de lanche, utilizando as tecnologias Node.js e Angular para o backend e frontend, respectivamente.
 =======
 
