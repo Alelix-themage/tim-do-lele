@@ -10,7 +10,7 @@ import { TelaInicialComponent } from './components/tela-inicial/tela-inicial.com
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'login',
         pathMatch: 'full',
     },
     {
