@@ -1,0 +1,10 @@
+<div class="card-container">
+    <div *ngFor="let lanche of lanches" class="card">
+        <div class="card-body text-center">
+            <img src="../../../../assets/img/lanche.png" alt="{{ lanche.NOME }}" class="img-fluid">
+            <h3 class="card-title">{{ lanche.NOME }}</h3>
+            <p class="card-text">Preço: R$ {{ lanche.PRECO.toFixed(2).replace('.', ',') }}</p>
+            <button class="btn btn-add-to-cart">Adicionar ao Carrinho</button>
+        </div>
+    </div>
+</div>

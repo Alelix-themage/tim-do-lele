@@ -4,18 +4,3 @@
     <h1>Tela Admin</h1> 
     <i class="ri-admin-line" id="admin__icon"></i>
 </div>
-
-<div>
-    <ag-grid-angular
-    style=" height: 600px;"
-    class="ag-theme-quartz-dark"
-    [columnDefs]="columnDefs"
-    [rowData]="rowData"
-    [defaultColDef]="{ sortable: true, filter: true }"
-    [gridOptions]="{
-      localeText: localeText
-    }"
-    >
-  </ag-grid-angular>
-
-</div>

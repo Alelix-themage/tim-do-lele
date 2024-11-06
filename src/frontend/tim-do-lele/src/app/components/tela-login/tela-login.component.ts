@@ -18,33 +18,32 @@ export class TelaLoginComponent {
     private autenticarService: AutenticarService
   ) {}
 
-  credenciais: any [] = [];
+  data: any [] = [];
   email: string |undefined;
   senha: string | undefined;
 
   // Método para validar login
   validarlogin(form: NgForm) {
     if (form.invalid) {
-      // Se o formulário for inválido, você pode exibir uma mensagem de erro
       console.log('Formulário inválido!');
       return;
     }
 
-    // Aqui você pode adicionar a lógica para enviar os dados de login
-    // console.log('Email:', form.value.email);
-    // console.log('Senha:', form.value.password);
-
-    // Exemplo: enviar os dados para o backend[]
+    this.data = form.value;
     this.email = form.value.email
     this.senha = form.value.password
+
+    // console.log(this.data)
     
-    this.credenciais = [this.email, this.senha]
-    this.autenticarService.postLogin(this.credenciais).subscribe( {
+    // this.data = [this.email, this.senha]
+    //envio das credenciais ao backend
+    this.autenticarService.postLogin(this.data).subscribe( {
         next: (data) => {
-          console.log("Logado com sucesso")
+          console.log("Dados enviados com sucesso.", data);
         },
         error: (erro) => {
-          console.error("Erro logar na conta.")
+          console.error("Erro logar na conta.", erro);
+          form.reset();
         }
       });
   }

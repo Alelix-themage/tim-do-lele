@@ -8,9 +8,12 @@ tecnologias necessárias:
     CORS
     crypto-js,
     passport.js
+    passport-lcoal
     
 }
 - Angular 
 sweetAlert2
 primeng
  primeng primeicons
+
+node --watch api.js
