@@ -8,6 +8,9 @@ const {ConsultarLanches} = require('./query_banco/consulta_lanches.js')
 //criptografia da senha
 const {CriptografarSenha} = require('./cipher.js')
 
+//validação de login
+const passport = require('./passport-config.js')
+
 const app = express();
 
 const PORT = 8000;
@@ -47,18 +50,19 @@ app.get('/lanches', async (req, res)=>{
 
 app.post('/autenticar-login', async (req, res) =>{
     try {
-        const credenciais = req.body;
-        email = credenciais[0]
+        const data = req.body;
+ 
         res.status(200).send('Credenciais de acesso recebidas com sucesso.')
-        senha = await CriptografarSenha(credenciais[1])
+
 
         console.log(`Credenciais de acesso
-                Login: ${credenciais[0]}
-                Senha: ${senha}
+                Login: ${data.email}}
+                Senha: ${data.password}
             `)
     }
-    catch{
+    catch(erro){
         console.error("Erro ao logar na conta!")
+        res.status(400).send({message: "Erro ao realizar validação de login."})
     }
 })
 
@@ -76,4 +80,5 @@ app.post('/enviar-cadastro', async (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
+
 });
