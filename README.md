@@ -3,21 +3,6 @@
 <<<<<<< HEAD
 Este projeto visa oferecer um sistema de acompanhamento de pedidos de lanche, utilizando as tecnologias Node.js e Angular para o backend e frontend, respectivamente.
 =======
-tecnologias necessárias:
-- Node {
-    express, 
-    sqlite
-    CORS
-    crypto-js,
-    passport.js
-    passport-lcoal
-    
-}
-- Angular 
-sweetAlert2
-primeng
- primeng primeicons
->>>>>>> a6354e9f8e17e7aaac7e801acb28e9870275eb02
 
 ## Tecnologias Utilizadas
 
