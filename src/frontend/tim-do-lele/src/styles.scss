@@ -33,6 +33,7 @@ input,
 section {
   font-size: var(--normal-font-size);
   font-family: var(--body-font);
+  background-color: rgb(235, 64, 52);
 }
 
 section {
@@ -65,7 +66,8 @@ img {
 .home__icon {
   position: absolute; /* Coloca o ícone no canto superior esquerdo */
   top: 1rem;
-  left: 1rem;
+  bottom: 2rem;
+  left: 2%;
   font-size: 2rem;
   color: white;
 }
@@ -95,7 +97,7 @@ img {
   text-align: center;
   font-size: 1.5rem;
   font-weight: var(--font-medium);
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
@@ -121,6 +123,7 @@ img {
 
 .form__input {
   width: 100%;
+  margin-left: 0.75rem;
   padding-block: 0.5rem;
   background: none;
   color: var(--white-color);
@@ -196,7 +199,8 @@ img {
   font-family: "Poppins", sans-serif;
   color: black;
   cursor: pointer;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .form__register {
@@ -237,15 +241,13 @@ img {
 /*=============== HOME PAGE ===============*/
 .background {
   display: flex;
-flex-direction: column;
-width: 100%;
-min-height: 100vh; /* Garante que o contêiner ocupe toda a altura da viewport */
-height: 100%;
-background-image: url('/assets/img/bg.png');
-background-size: cover;
-background-repeat: no-repeat; /* Evita repetição da imagem */
-background-position: center;
-position: relative;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh; /* Garante que o contêiner ocupe toda a altura da viewport */
+  background-image: url('/assets/img/bg.png');
+  background-size: cover; /* Ajusta para cobrir toda a área do contêiner */
+  background-repeat: no-repeat; /* Evita repetição da imagem */
+  background-position: center;
 }
 
 .content {
@@ -286,7 +288,7 @@ a {
   .form__logo {
     display: block;
     margin: 0 auto;
-    max-width: 60%;
+    max-width: 70%;
     height: auto;
   }
 
@@ -300,5 +302,49 @@ a {
     font-weight: var(--font-medium);
     margin-top: 2rem;
     margin-bottom: 1rem;
+  }
+}
+
+/* Telas pequenas (abaixo de 576px) */
+@media screen and (max-width: 575.98px) {
+  .background {
+    background-size: cover; /* Garante que a imagem ainda cubra a tela */
+    background-attachment: fixed;
+  }
+
+  .form__logo {
+    max-width: 40%; 
+  }
+
+  .form__title {
+    font-size: 1.5rem;
+    margin-top: 0rem;
+  }
+
+  .form__form {
+    margin-bottom: 1rem;
+  }
+
+  .form__register {
+    text-align: center;
+    margin-bottom: 0rem;
+    margin-top: 1.5rem;
+  }
+
+  .form__content {
+    row-gap: 0.75rem;
+  }
+
+  .form__submit__button {
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+  }
+
+  .form {
+    margin-top: 1rem; /* Adicione esta linha para ajustar o espaço no topo */
+  }
+
+  .home__icon {
+    left: 5%;
   }
 }

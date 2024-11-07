@@ -51,6 +51,7 @@ export class TelaLoginComponent {
 
 
 
+  //design do front
   showHiddenPass(inputId: string, iconId: string): void {
     const input = document.getElementById(inputId) as HTMLInputElement;
     const iconEye = document.getElementById(iconId) as HTMLElement;
