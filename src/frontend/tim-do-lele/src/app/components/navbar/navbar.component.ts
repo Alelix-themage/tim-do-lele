@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,8 +10,13 @@ import { CommonModule } from '@angular/common';
 })
 export class NavbarComponent {
   @ViewChild('searchForm') searchForm!: ElementRef;
+  @Output() cartClicked = new EventEmitter<void>(); // Evento para o carrinho
 
   toggleSearchForm() {
     this.searchForm.nativeElement.classList.toggle('active');
+  }
+
+  onCartClick() {
+    this.cartClicked.emit();  // Emite evento para abrir o carrinho
   }
 }
