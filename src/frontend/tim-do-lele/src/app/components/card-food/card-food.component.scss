@@ -10,20 +10,18 @@
 /* Card */
 .card {
     background-color: rgb(172, 60, 60);
-    width: 240px; /* Largura ajustada para menos largo */
+    width: 240px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
     text-align: center;
     padding: 20px;
-}
-
-.card:hover {
-    transform: scale(1.05);
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .card img {
-    width: 80px;
+    width: 70%;
     height: auto;
     margin-bottom: 10px;
 }
@@ -37,21 +35,89 @@
 .card-text {
     font-size: 1.2rem;
     color: #fff;
+    margin-bottom: auto;
 }
 
 /* Botão Adicionar ao Carrinho */
 .btn-add-to-cart {
-    background-color: rgb(138, 44, 44);; /* Amarelo */
+    background-color: rgb(138, 44, 44);
+    font-size: medium;
     color: #fff;
     font-weight: bold;
     border: none;
-    padding: 7px 20px;
+    padding: 10px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s;
+    width: calc(100% - 20px); /* Ajuste a largura do botão para ocupar quase todo o card */
+     /* Margem aos lados e embaixo */
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }
 
 .btn-add-to-cart:hover {
-    background-color: var(--yellow-color); /* Amarelo mais escuro ao passar o mouse */
+    background-color: var(--yellow-color);
     color: rgb(133, 92, 32);
+}
+
+/* Pop-up Estilos */
+.details {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.details-content {
+    color: black;
+    background-color: white;
+    padding: 20px;
+    width: 40%;
+    height: 60%;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+}
+
+.details-img {
+    width: 60%;
+    height: auto;
+}
+
+.original-price {
+    color: gray;
+}
+
+.details-title {
+    font-size: 2rem;
+    padding-bottom: 5%;
+}
+
+/* Botão de fechar */
+.close-button {
+    color: black;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Telas pequenas (abaixo de 576px) */
+@media screen and (max-width: 575.98px) {
+    .details-content {
+        width: 80%;
+        height: 50%;
+    }
+
+    .details-img {
+        width: 80%;
+    }
 }
