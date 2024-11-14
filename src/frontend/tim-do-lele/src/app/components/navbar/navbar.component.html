@@ -7,7 +7,7 @@
     </nav>
 
     <div class="icons">
-        <div class="ri-menu-line" id="menu-btn"></div>
+        <div class="ri-menu-line" id="menu-btn" (click)="toggleMenu()"></div>
         <div class="ri-search-line" id="search-btn" (click)="toggleSearchForm()"></div>
         <div class="ri-shopping-cart-line" id="cart-btn" (click)="onCartClick()"></div>
         <a href="/login">
@@ -20,7 +20,4 @@
         <input type="search" id="search-box" placeholder="Pesquise aqui..." class="box">
         <label for="search-box" class="ri-search-line" ></label>
     </form>
-
 </header>
-
-<script defer src="navbar.component.ts"></script>

@@ -19,4 +19,9 @@ export class NavbarComponent {
   onCartClick() {
     this.cartClicked.emit();  // Emite evento para abrir o carrinho
   }
+
+  toggleMenu() {
+    const nav = document.querySelector('.nav');
+    nav?.classList.toggle('active');
+  }
 }
