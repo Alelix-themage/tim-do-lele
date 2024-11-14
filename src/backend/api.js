@@ -5,6 +5,10 @@ const { ConsultarUsers } = require('./query_banco/consulta_cadastro.js');
 const {InserirUser} = require('./query_banco/inserir_cadastro.js')
 const {ConsultarLanches} = require('./query_banco/consulta_lanches.js')
 
+//módulo de configuração do banco de dados
+const {ConfigBanco} = require('./query_banco/config_banco.js')
+
+
 //criptografia da senha
 const {CriptografarSenha} = require('./cipher.js')
 
@@ -48,35 +52,66 @@ app.get('/lanches', async (req, res)=>{
     }
 })
 
-app.post('/autenticar-login', async (req, res) =>{
+
+app.post('/autenticar-login', async (req, res) => {
     try {
-        const data = req.body;
- 
-        res.status(200).send('Credenciais de acesso recebidas com sucesso.')
+        const { email, password } = req.body;
+        const db = ConfigBanco();
+        console.log(email)
+        console.log(password)   
+
+        // Criptografa a senha recebida
+        const senhaCriptografada = await CriptografarSenha(password);
+
+        // Consulta o banco para verificar o usuário e senha
+        db.get('SELECT * FROM USERS WHERE EMAIL = ?', [email], (err, user) => {
+            if (err) {
+                console.error("Erro ao consultar o banco de dados:", err);
+                return res.status(500).send({ message: "Erro no servidor." });
+            }
+            if (!user) {
+                return res.status(401).send({ message: "Usuário não encontrado." });
+            }
+
+            // Compara a senha criptografada com a coluna SENHA
+            if (user.SENHA !== senhaCriptografada) {
+                return res.status(401).send({ message: "Senha incorreta." });
+            }
+
+            // Login bem-sucedido
+            res.status(200).send({ message: "Login bem-sucedido!" });
+        });
+
+        db.close();
+    } catch (error) {
+        console.error("Erro no login:", error);
+        res.status(400).send({ message: "Erro ao realizar o login." });
+    }
+});
 
 
-        console.log(`Credenciais de acesso
-                Login: ${data.email}}
-                Senha: ${data.password}
-            `)
-    }
-    catch(erro){
-        console.error("Erro ao logar na conta!")
-        res.status(400).send({message: "Erro ao realizar validação de login."})
-    }
-})
 
 app.post('/enviar-cadastro', async (req, res) => {
     try {
-        data = req.body;
-        senha = await CriptografarSenha(data.senha)
-        InserirUser(data.email, data.nome, senha, data.telefone)
-        res.status(200).json({message: "Dados enviados com sucesso."}) 
+        const data = req.body;
+        
+        // Criptografa a senha do user
+        let senhaCriptografada;
+        try {
+            senhaCriptografada = await CriptografarSenha(data.senha);
+        } catch (erroCripto) {
+            console.error("Erro ao criptografar senha:", erroCripto);
+            return res.status(500).send({ message: "Erro na criptografia da senha." });
+        }
+
+        await InserirUser(data.email, data.nome, senhaCriptografada, data.telefone);
+        res.status(200).json({ message: "Dados enviados com sucesso." });
+    } catch (erro) {
+        console.error("Erro ao enviar cadastro:", erro);
+        res.status(500).send({ message: "Falha ao enviar os dados." });
     }
-    catch(erro){
-        res.status(400).send({message: "Falha ao enviar os dados."})
-    }
-})
+});
+
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);

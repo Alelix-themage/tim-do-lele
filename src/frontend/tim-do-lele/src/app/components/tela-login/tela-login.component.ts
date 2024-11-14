@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgForm, FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 //services
 import { AutenticarService } from 'app/service/autenticar-login.service';
@@ -15,7 +16,8 @@ import { AutenticarService } from 'app/service/autenticar-login.service';
 
 export class TelaLoginComponent {
   constructor(
-    private autenticarService: AutenticarService
+    private autenticarService: AutenticarService,
+    private router: Router,
   ) {}
 
   data: any [] = [];
@@ -28,25 +30,26 @@ export class TelaLoginComponent {
       console.log('Formulário inválido!');
       return;
     }
-
-    this.data = form.value;
-    this.email = form.value.email
-    this.senha = form.value.password
-
-    // console.log(this.data)
-    
-    // this.data = [this.email, this.senha]
-    //envio das credenciais ao backend
-    this.autenticarService.postLogin(this.data).subscribe( {
-        next: (data) => {
-          console.log("Dados enviados com sucesso.", data);
-        },
-        error: (erro) => {
-          console.error("Erro logar na conta.", erro);
-          form.reset();
-        }
-      });
+  
+    const loginData = {
+      email: form.value.email,
+      password: form.value.password
+    };
+  
+    // Envia a requisição de login
+    this.autenticarService.postLogin(loginData).subscribe({
+      next: (data) => {
+        console.log("Login realizado com sucesso.");
+        this.router.navigate(['/home']);
+        
+      },
+      error: (erro) => {
+        console.error("Erro ao logar na conta.", erro);
+        form.reset();
+      }
+    });
   }
+  
 
 
 

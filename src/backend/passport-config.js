@@ -1,14 +1,18 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const { ConfigBanco } = require('./query_banco/config_banco.js'); 
-const { CriptografarSenha } = require('./cipher.js'); 
+const bcrypt = require('bcrypt'); // Certifique-se de ter o bcrypt instalado
+
+// Função para comparar a senha fornecida com a senha armazenada criptografada
+async function CompararSenhas(senhaFornecida, senhaArmazenada) {
+    return bcrypt.compare(senhaFornecida, senhaArmazenada);
+}
 
 passport.use(new LocalStrategy(
-    async (name, password, done) => {
+    async (email, password, done) => {
         const db = ConfigBanco(); // Conecta ao banco
 
-        db.get('SELECT * FROM USERS WHERE NOME = ?', [name], async (err, user) => {
-            //Verifica se o usuário foi encontrado
+        db.get('SELECT * FROM USERS WHERE EMAIL = ?', [email], async (err, user) => {
             if (err) {
                 return done(err);
             }
@@ -16,22 +20,21 @@ passport.use(new LocalStrategy(
                 return done(null, false, { message: 'Usuário não encontrado.' });
             }
 
-            // Criptografa a senha fornecida e compara
-            const senhaCriptografada = await CriptografarSenha(password);
-            //verifica se as senhas fornecidas são iguais
-            if (user.password !== senhaCriptografada) {
+            // Comparar a senha fornecida com a senha criptografada armazenada
+            const isPasswordValid = await bcrypt.compare(password, user.password);
+            if (!isPasswordValid) {
                 return done(null, false, { message: 'Senha incorreta.' });
             }
 
-            return done(null, user);
+            return done(null, user); // Usuário autenticado com sucesso
         });
 
         db.close(); // Fecha a conexão com o banco após a operação
     }
 ));
 
+
 // Serialização e deserialização do usuário
-//Armazena o identificador ID do usuário na sessão
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });

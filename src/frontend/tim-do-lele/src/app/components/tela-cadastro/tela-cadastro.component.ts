@@ -1,123 +1,105 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, RouterOutlet, Router } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
-//services
+// Service
 import { CadastroService } from 'app/service/cadastro.service';
-
-
 
 @Component({
   selector: 'app-tela-cadastro',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule, RouterOutlet, ReactiveFormsModule],
+  imports: [FormsModule, CommonModule, RouterModule, ReactiveFormsModule],
   templateUrl: './tela-cadastro.component.html',
   styleUrl: './tela-cadastro.component.scss'
 })
 export class TelaCadastroComponent implements OnInit {
   email: string | undefined;
   senha: string | undefined;
-  confimar_senha: string | undefined;
-  telefone: string |  undefined
+  confirmar_senha: string | undefined;
+  telefone: string | undefined;
+  nome: string | undefined;
 
   constructor(
     private cadastroService: CadastroService,
     private router: Router
-  ){}
+  ) {}
 
-  ngOnInit(): void {
-      
-  }
+  ngOnInit(): void {}
 
   onSubmit(form: any): void {
-    const data = form.value;
-    const nome = form.value.nome;
-    const email = form.value.email;
-    const senha = form.value.senha;
-    const confirmar_senha = form.value.confimar_senha;
-    const telefone = form.value.telefone;
+    const { nome, email, senha, confirmar_senha, telefone } = form.value;
 
-    if(IsEmptyVar(nome)){
-      alert("Não é possível fazer cadastro com o campo Nome em branco. Por favor, tente novamente!")
+    if (this.isEmptyVar(nome)) {
+      return this.showAlert('Campo Nome em branco. Por favor, preencha o campo.');
     }
-    if(IsEmptyVar(email)){
-      alert("Não é possível fazer cadastro com o campo Email em branco. Por favor, tente novamente!")
+    if (this.isEmptyVar(email)) {
+      return this.showAlert('Campo Email em branco. Por favor, preencha o campo.');
     }
-    if(IsEmptyVar(senha)){
-      alert("Não é possível fazer cadastro com o campo Senha em branco. Por favor, tente novamente!")
+    if (this.isEmptyVar(senha)) {
+      return this.showAlert('Campo Senha em branco. Por favor, preencha o campo.');
     }
-    if(IsEmptyVar(confirmar_senha)){
-      alert("Não é possível fazer cadastro com o campo Confirmar Senha em branco. Por favor, tente novamente!")
+    if (this.isEmptyVar(confirmar_senha)) {
+      return this.showAlert('Campo Confirmar Senha em branco. Por favor, preencha o campo.');
     }
-    if(IsEmptyVar(telefone)){
-      alert("Não é possível fazer cadastro com o campo telefone em branco. Por favor, tente novamente!")
+    if (this.isEmptyVar(telefone)) {
+      return this.showAlert('Campo Telefone em branco. Por favor, preencha o campo.');
+    }
+    if (senha !== confirmar_senha) {
+      return this.showAlert('As senhas estão diferentes. Por favor, verifique novamente!');
     }
 
-    if(senha != confirmar_senha){
-      alert("As senhas estão diferentes, por favor cheque novamente!")
-    }
-
-    else{
-      //enviou das respostas do cadastro
-      this.cadastroService.postDataCadastro(data).subscribe({
-        next: (dados) => {
-          console.log("Dados enviados com sucesso!")
-          mostrarAlert(form)
-          this.router.navigate(['/home'])
-        },
-        error: (erro) => {
-          console.error("Erro ao enviar cadastro ao backend.", erro)
-          alert("Erro ao realizar o cadastro!")
-          form.reset();
-        }
-      })
-    }
+    // Enviar dados para o serviço de cadastro
+    this.cadastroService.postDataCadastro(form.value).subscribe({
+      next: () => {
+        this.showSuccessAlert('Seu cadastro foi concluído com sucesso!');
+        this.router.navigate(['/login']);
+        form.reset();
+      },
+      error: (erro) => {
+        console.error("Erro ao enviar cadastro ao backend.", erro);
+        this.showAlert("Erro ao realizar o cadastro. Tente novamente.");
+        form.reset();
+      }
+    });
   }
 
-
-
-
-
-
-  //design do front
   showHiddenPass(inputId: string, iconId: string): void {
     const input = document.getElementById(inputId) as HTMLInputElement;
     const iconEye = document.getElementById(iconId) as HTMLElement;
 
-    if (!input || !iconEye) return; // Verifica se os elementos existem
-
-    if (input.type === 'password') {
-      // Trocar para texto
-      input.type = 'text';
-
-      // Alterar ícone
-      iconEye.classList.add('ri-eye-line');
-      iconEye.classList.remove('ri-eye-off-line');
-    } else {
-      // Trocar para senha
-      input.type = 'password';
-
-      // Alterar ícone
-      iconEye.classList.remove('ri-eye-line');
-      iconEye.classList.add('ri-eye-off-line');
+    if (input && iconEye) {
+      if (input.type === 'password') {
+        input.type = 'text';
+        iconEye.classList.add('ri-eye-line');
+        iconEye.classList.remove('ri-eye-off-line');
+      } else {
+        input.type = 'password';
+        iconEye.classList.remove('ri-eye-line');
+        iconEye.classList.add('ri-eye-off-line');
+      }
     }
   }
 
-}
+  private isEmptyVar(value: any): boolean {
+    return value === null || value === undefined || (typeof value === "string" && value.trim() === '');
+  }
 
-//Função que trata string não apropriadas
-function IsEmptyVar(value : any) : boolean  {
-  return value === null || value == undefined || (typeof value === "string" && value.trim() == '')
-} 
+  private showAlert(message: string): void {
+    Swal.fire({
+      icon: 'error',
+      text: message,
+      confirmButtonText: 'Ok'
+    });
+  }
 
-function mostrarAlert(form: any) : void {
-  Swal.fire({
-    title: 'Parabéns!',
-    text: 'Seu cadastro foi concluído com suceso!',
-    icon: 'success',
-    confirmButtonText: 'Ok'
-  });
-  form.reset()
+  private showSuccessAlert(message: string): void {
+    Swal.fire({
+      title: 'Parabéns!',
+      text: message,
+      icon: 'success',
+      confirmButtonText: 'Ok'
+    });
+  }
 }
