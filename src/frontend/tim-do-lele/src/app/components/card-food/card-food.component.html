@@ -16,7 +16,8 @@
         
         <img src="../../../../assets/img/lanche.png" alt="selectedLanche?.NOME" class="details-img">
         <p class ="original-price">Preço: R$ {{ formattedPrice }}</p>
-        <button class="btn btn-add-to-cart">Adicionar ao Carrinho       R$ {{ formattedPrice }}</button>
+        <button class="btn btn-add-to-cart" (click)="addToCart()">Adicionar ao Carrinho - R$ {{ formattedPrice }}</button>
+
       </div>
     </div>
 </div>

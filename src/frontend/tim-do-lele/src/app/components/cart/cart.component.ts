@@ -1,12 +1,25 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { CartService } from 'app/service/cart.service';
+import { Food } from '../Food.model';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [],
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.scss'
+  styleUrls: ['./cart.component.scss']
 })
-export class CartComponent {
-  @Output() cartClosed = new EventEmitter<void>();  // Emite evento para fechar o carrinho
+export class CartComponent implements OnInit {
+  @Output() cartClosed = new EventEmitter<void>();
+  items: Food[] = [];
+
+  constructor(private cartService: CartService) {}
+
+  ngOnInit(): void {
+    this.items = this.cartService.getItems();
+  }
+
+  clearCart(): void {
+    this.cartService.clearCart();
+    this.items = [];
+  }
 }
