@@ -1,17 +1,15 @@
 <header class="header">
-    <a href="#" class="logo"> <img src="assets/img/logo-tim-header.png"></a>
+    <img class="logo" src="assets/img/logo-tim-header.png">
     <nav class="nav"> 
-        <a href="/tela-inicial">Início</a>
-        <a href="#burgers">X-Burguers</a>
-        <a href="#frango">X-Frango</a>
-        <a href="#hotdogs">Hotdogs</a>
+        <a href="/home">Início</a>
+        <a href="#burgers">Lanches</a>
         <a href="#bebidas">Bebidas</a>
     </nav>
 
     <div class="icons">
         <div class="ri-menu-line" id="menu-btn"></div>
         <div class="ri-search-line" id="search-btn" (click)="toggleSearchForm()"></div>
-        <div class="ri-shopping-cart-line" id="cart-btn"></div>
+        <div class="ri-shopping-cart-line" id="cart-btn" (click)="onCartClick()"></div>
         <a href="/login">
             <div class="ri-user-line" id="user-btn"></div>
         </a>
