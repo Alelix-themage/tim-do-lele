@@ -1,4 +1,5 @@
 .header {
+  font-family: "Poppins", sans-serif;
   position: fixed;
   top: 0;
   left: 0;
@@ -71,6 +72,23 @@
   display: none; /* Esconde o ícone do menu em telas grandes */
 }
 
+.btn{
+  margin-top: 1rem;
+  display: inline-block;
+  padding: .8rem 3rem;
+  font-size: 1.7rem;
+  border-radius: .5rem;
+  background-color: rgb(187, 44, 44);;
+  color:#fff;
+  cursor: pointer;
+}
+
+.btn:hover{
+  background-color: var(--yellow-color);
+  color: rgb(133, 92, 32);
+  text-decoration: none;
+}
+
 .search-form {
   position: absolute;
   top: 110%;
@@ -110,6 +128,114 @@
           color: var(--yellow-color);
       }
   }
+}
+
+.header .shopping-cart{
+  position: absolute;
+  top:110%; right:-110%;
+  padding:1rem;
+  border-radius: .5rem;
+  box-shadow: var(--box-shadow);
+  width: 27rem;
+  background: #fff;
+
+  &.active {
+    right: 1%; /* Mostra a barra de pesquisa quando ativa */
+    transition: 0.3s linear;
+}
+}
+
+.img-cart{
+  width: 30%;
+  height: auto;  
+  margin-right: 0.5rem;      
+}
+
+.header .shopping-cart .box{
+  display: flex;
+  align-items: center;
+  gap: 0rem;
+  position: relative;
+  margin: 1rem 0;
+}
+
+
+.header .shopping-cart .box .ri-delete-bin-6-line{
+  font-size: 2rem;
+  position: absolute;
+  top: 50%; right: 1rem;
+  cursor: pointer;
+  color:var(--black-color);
+  transform:translateY(-50%)
+}
+
+.header .shopping-cart .box .ri-delete-bin-6-line:hover{
+  color: var(--yellow-color);
+} 
+
+.header .shopping-cart .box .content{
+  align-items: start;
+}
+
+.header .shopping-cart .box .content h3{
+  color:rgb(43, 43, 43);
+  font-size: 1.7rem;
+}
+
+.header .shopping-cart .box .content span{
+  color:rgb(61, 61, 61);
+  font-size: 1.6rem;
+}
+
+.header .shopping-cart .box .content quantity{
+  padding-left: 1rem;
+}
+
+.header .shopping-cart .total{
+  font-size: 1.75rem;  
+  padding: 0.5rem;
+  text-align: right;
+  color: var(--black-color)
+}
+
+.header .shopping-cart .btn{
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-quantity {
+  width: 1.75rem;
+  height: 1.75rem;
+  border: none;
+  background-color: rgb(172, 60, 60);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-quantity:hover {
+  background-color: var(--yellow-color);
+  color: rgb(133, 92, 32);
+}
+
+.quantity-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  width: 2rem; /* Para alinhar bem o número */
 }
 
 /* Responsividade */

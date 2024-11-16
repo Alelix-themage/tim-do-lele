@@ -9,7 +9,7 @@
     <div class="icons">
         <div class="ri-menu-line" id="menu-btn" (click)="toggleMenu()"></div>
         <div class="ri-search-line" id="search-btn" (click)="toggleSearchForm()"></div>
-        <div class="ri-shopping-cart-line" id="cart-btn" (click)="onCartClick()"></div>
+        <div class="ri-shopping-cart-line" id="cart-btn" (click)="toggleCart()"></div>
         <a href="/login">
             <div class="ri-user-line" id="user-btn"></div>
         </a>
@@ -20,4 +20,34 @@
         <input type="search" id="search-box" placeholder="Pesquise aqui..." class="box">
         <label for="search-box" class="ri-search-line" ></label>
     </form>
+
+    <div #cart class="shopping-cart">
+        <div class="box">
+            <i class="ri-delete-bin-6-line"></i>
+            <img class="img-cart" src="../../../../assets/img/lanche-p.png" alt="">
+            <div class="content">
+                <h3>Lanche</h3>
+                <span class="price">R$30,00/-</span>
+                <span class="quantity">Qnt : 1</span>
+            </div> 
+        </div>
+        <div class="box">
+            <i class="ri-delete-bin-6-line"></i>
+            <img class="img-cart" src="../../../../assets/img/lanche-p.png" alt="">
+            
+            <div class="content">
+                <h3>Lanche 2</h3>
+                <span class="price">R$30,00</span>
+                <div class="quantity-controls">
+                    <button class="btn-quantity" (click)="decreaseQuantity()">-</button>
+                    <span class="quantity-value">{{ quantity }}</span>
+                    <button class="btn-quantity" (click)="increaseQuantity()">+</button>
+                </div>
+            </div> 
+            
+        </div>
+        <div class="total"> Total : R$60,00</div>
+        <a href="#" class="btn"> Finalizar Compra</a>
+    </div>
 </header>
+
