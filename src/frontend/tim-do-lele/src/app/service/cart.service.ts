@@ -1,24 +1,51 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Food } from 'app/components/Food.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
-  private items: Food[] = [];
+  private cartItems: Food[] = [];
+  private cartSubject = new BehaviorSubject<Food[]>([]);
 
-  // Adiciona um lanche ao carrinho
+  public cart$ = this.cartSubject.asObservable();
+
   addToCart(item: Food): void {
-    this.items.push(item);
+    const existingItem = this.cartItems.find(cartItem => cartItem.ID === item.ID);
+    if (existingItem) {
+      existingItem.QUANTITY = (existingItem.QUANTITY || 1) + 1;
+    } else {
+      this.cartItems.push({ ...item, QUANTITY: 1 });
+    }
+    this.cartSubject.next(this.cartItems);
   }
 
-  // Retorna os itens do carrinho
-  getItems(): Food[] {
-    return this.items;
+  increaseQuantity(item: Food): void {
+    const cartItem = this.cartItems.find(cartItem => cartItem.ID === item.ID);
+    if (cartItem) {
+      cartItem.QUANTITY = (cartItem.QUANTITY || 1) + 1;
+      this.cartSubject.next(this.cartItems);
+    }
   }
 
-  // Limpa o carrinho
-  clearCart(): void {
-    this.items = [];
+  decreaseQuantity(item: Food): void {
+    const cartItem = this.cartItems.find(cartItem => cartItem.ID === item.ID);
+    if (cartItem && cartItem.QUANTITY && cartItem.QUANTITY > 1) {
+      cartItem.QUANTITY--;
+      this.cartSubject.next(this.cartItems);
+    }
+  }
+
+  getCartItems(): Food[] {
+    return this.cartItems;
+  }
+
+  removeFromCart(item: Food): void {
+    const index = this.cartItems.findIndex(cartItem => cartItem.ID === item.ID);
+    if (index !== -1) {
+      this.cartItems.splice(index, 1); // Remove o item
+      this.cartSubject.next(this.cartItems); // Atualiza os observadores
+    }
   }
 }

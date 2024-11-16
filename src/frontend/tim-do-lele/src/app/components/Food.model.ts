@@ -4,4 +4,5 @@ export interface Food {
     ID: number;
     NOME: string;
     PRECO: number;
+    QUANTITY?: number;
 }

@@ -112,9 +112,9 @@
       width: 100%;
       background: none;
       text-transform: none;
-      font-size: 1rem;
+      font-size: 1.25rem;
       color: var(--black-color);
-      padding: 0 1rem;
+      padding: 1 1rem;
   }
 
   label {
@@ -137,7 +137,8 @@
   box-shadow: var(--box-shadow);
   width: 27rem;
   background: #fff;
-
+  transition: right 0.3s linear;
+  
   &.active {
     right: 1%; /* Mostra a barra de pesquisa quando ativa */
     transition: 0.3s linear;
@@ -162,19 +163,6 @@
 }
 
 
-.header .shopping-cart .box .ri-delete-bin-6-line{
-  font-size: 2rem;
-  position: absolute;
-  top: 50%; right: 1rem;
-  cursor: pointer;
-  color:var(--black-color);
-  transform:translateY(-50%)
-}
-
-.header .shopping-cart .box .ri-delete-bin-6-line:hover{
-  color: var(--yellow-color);
-} 
-
 .header .shopping-cart .box .content{
   align-items: start;
 }
@@ -182,6 +170,11 @@
 .header .shopping-cart .box .content h3{
   color:rgb(43, 43, 43);
   font-size: 1.7rem;
+}
+
+.empty-cart-message{
+  color:rgb(43, 43, 43);
+  font-size: 1.25rem;
 }
 
 .header .shopping-cart .box .content span{
@@ -237,6 +230,24 @@
   font-weight: bold;
   text-align: center;
   width: 2rem; /* Para alinhar bem o número */
+}
+
+.header .shopping-cart .box .ri-delete-bin-6-line {
+  font-size: 1rem; /* Tamanho do ícone da lixeira igual ao do botão */
+  color: white; /* Cor do ícone */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(172, 60, 60); /* Fundo igual ao do botão */
+  width: 1.75rem; /* Largura do botão */
+  height: 1.75rem; /* Altura do botão */
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.header .shopping-cart .box .ri-delete-bin-6-line:hover {
+  background-color: var(--yellow-color);
+  color: rgb(133, 92, 32);
 }
 
 /* Responsividade */
