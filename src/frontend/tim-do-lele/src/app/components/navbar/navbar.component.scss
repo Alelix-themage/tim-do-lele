@@ -73,9 +73,8 @@
 }
 
 .btn{
-  margin-top: 1rem;
   display: inline-block;
-  padding: .8rem 3rem;
+  padding: .8rem;
   font-size: 1.7rem;
   border-radius: .5rem;
   background-color: rgb(187, 44, 44);;
@@ -156,7 +155,10 @@
   align-items: center;
   gap: 0rem;
   position: relative;
-  margin: 1rem 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc; /* Linha entre os lanches */
+
 }
 
 
@@ -202,7 +204,6 @@
   font-weight: bold;
   display: block;
   text-align: center;
-  margin: 1rem 0;
 }
 
 .quantity-controls {
