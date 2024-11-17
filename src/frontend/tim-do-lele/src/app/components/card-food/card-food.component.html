@@ -54,7 +54,7 @@
       </div>
 
       <!-- Botão de Adicionar ao Carrinho -->
-      <button class="btn btn-add-to-cart" (click)="addToCart()">Adicionar ao Carrinho - R$ {{ selectedLanche?.PRECO.toFixed(2).replace('.', ',') }}</button>
+      <button class="btn btn-add-to-cart" (click)="addToCart()">Adicionar ao Carrinho - R$ {{ (selectedLanche?.PRECO || 0).toFixed(2).replace('.', ',') }}</button>
     </div>
   </div>
 </div>

@@ -4,6 +4,7 @@ import { CartService } from 'app/service/cart.service';
 import { Food } from 'app/components/Food.model';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
   selector: 'app-card-food',
   standalone: true,
@@ -54,10 +55,13 @@ export class CardFoodComponent implements OnInit {
     this.selectedLanche = null;
   }
 
+  
+
   addToCart(): void {
     if (this.selectedLanche) {
       this.cartService.addToCart(this.selectedLanche);
       this.closePopup();
+      
     }
   }
 }

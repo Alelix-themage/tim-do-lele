@@ -6,6 +6,7 @@ import { TelaLoginComponent } from './components/tela-login/tela-login.component
 import { TelaCadastroComponent } from './components/tela-cadastro/tela-cadastro.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TelaInicialComponent } from './components/tela-inicial/tela-inicial.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 export const routes: Routes = [
     {
@@ -46,5 +47,10 @@ export const routes: Routes = [
         path: "tela-inicial",
         component: TelaInicialComponent,
         title: "Tim do Lelê - inicio",
+    },
+    {
+        path: "perfil",
+        component: PerfilComponent,
+        title: "Tim do Lelê - Perfil",
     },
 ];
