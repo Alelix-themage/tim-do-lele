@@ -24,6 +24,22 @@ export class CardFoodComponent implements OnInit {
     });
   }
 
+  isSauceOpen = false;
+
+  toggleSauceOptions(): void {
+    this.isSauceOpen = !this.isSauceOpen;
+  
+    // Ajustar a altura do popup dinamicamente (se necessário)
+    const detailsContent = document.querySelector('.details-content') as HTMLElement;
+    if (detailsContent) {
+      if (this.isSauceOpen) {
+        detailsContent.style.height = 'auto'; // Deixa a altura aumentar conforme o conteúdo
+      } else {
+        detailsContent.style.height = ''; // Remove qualquer altura fixa
+      }
+    }
+  }
+
   openPopup(lanche: Food): void {
     this.selectedLanche = lanche;
     this.isPopupOpen = true;

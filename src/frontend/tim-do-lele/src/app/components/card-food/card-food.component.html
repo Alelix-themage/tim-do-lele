@@ -1,25 +1,62 @@
 <div class="card-container">
-    <div *ngFor="let lanche of lanches" class="card" (click)="openPopup(lanche)">
-      <div class="card-body text-center">
-        <img src="../../../../assets/img/lanche.png" alt="{{ lanche.NOME }}" class="img-fluid">
-        <h3 class="card-title">{{ lanche.NOME }}</h3>
-        <p class="card-text">Preço: R$ {{ lanche.PRECO.toFixed(2).replace('.', ',') }}</p>
-      </div>
+  <div *ngFor="let lanche of lanches" class="card" (click)="openPopup(lanche)">
+    <div class="card-body text-center">
+      <img src="../../../../assets/img/lanche.png" alt="{{ lanche.NOME }}" class="img-fluid">
+      <h3 class="card-title">{{ lanche.NOME }}</h3>
+      <p class="card-text">Preço: R$ {{ lanche.PRECO.toFixed(2).replace('.', ',') }}</p>
     </div>
-  
-    <div class="details" *ngIf="isPopupOpen" (click)="onBackdropClick($event)">
-      <div class="details-content" (click)="$event.stopPropagation()">
-        <span class="close-button" (click)="closePopup()">&times;</span>
-        
-        
-        <h2 class="details-title">{{ selectedLanche?.NOME }}</h2>
-        
-        <img src="../../../../assets/img/lanche.png" alt="selectedLanche?.NOME" class="details-img">
-        <p class ="original-price">Preço: R$ {{ selectedLanche?.PRECO }}</p>
-        <button class="btn btn-add-to-cart" (click)="addToCart()">Adicionar ao Carrinho - R$ {{ selectedLanche?.PRECO }}</button>
+  </div>
 
+  <!-- detalhes do lanche-->
+  <div class="details" *ngIf="isPopupOpen" (click)="onBackdropClick($event)">
+    <div class="details-content" (click)="$event.stopPropagation()">
+      <span class="close-button" (click)="closePopup()">&times;</span>
+
+      <!-- titulo -->
+      <h2 class="details-title">{{ selectedLanche?.NOME }}</h2>
+      <img src="../../../../assets/img/lanche.png" alt="{{ selectedLanche?.NOME }}" class="details-img">
+
+      <!-- implementar puxar ingredientes do banco -->
+      <p class="ingredients-text">Ingredientes: Pão, Carne, Queijo, Alface, Tomate.</p>
+
+      <!-- Seção de Molhos -->
+      <div class="sauce-section">
+        <button class="toggle-sauce" (click)="toggleSauceOptions()">
+          Opções de Molhos 
+          <span [class.rotated]="isSauceOpen">▼</span>
+        </button>
+        <div class="sauce-options" *ngIf="isSauceOpen">
+          <label>
+            <input type="checkbox" /> Ketchup
+          </label>
+          <label>
+            <input type="checkbox" /> Big Mac
+          </label>
+          <label>
+            <input type="checkbox" /> Mostarda
+          </label>
+          <label>
+            <input type="checkbox" /> Barbecue
+          </label>
+          <label>
+            <input type="checkbox" /> Maionese
+          </label>
+          <label>
+            <input type="checkbox" /> Pimenta
+          </label>
+        </div>
       </div>
+
+      <!-- Área de Observações -->
+      <div class="observations-section">
+        <label for="observations">Observações:</label>
+        <textarea id="observations" rows="3" placeholder="Escreva aqui suas observações..."></textarea>
+      </div>
+
+      <!-- Botão de Adicionar ao Carrinho -->
+      <button class="btn btn-add-to-cart" (click)="addToCart()">Adicionar ao Carrinho - R$ {{ selectedLanche?.PRECO.toFixed(2).replace('.', ',') }}</button>
     </div>
+  </div>
 </div>
   
 

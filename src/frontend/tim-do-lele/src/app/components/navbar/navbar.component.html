@@ -42,7 +42,7 @@
                     
                     <!-- Se a quantidade for maior que 1, mostrar o ícone de menos -->
                     <button *ngIf="(item.QUANTITY ?? 0) > 1" 
-                            class="btn-quantity ri-minus-line" 
+                            class="btn-quantity" 
                             (click)="cartService.decreaseQuantity(item)">
                       -
                     </button>
