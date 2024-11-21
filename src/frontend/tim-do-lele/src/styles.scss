@@ -324,7 +324,11 @@ a {
 /* Telas pequenas (abaixo de 576px) */
 @media screen and (max-width: 575.98px) {
   
-
+  .fotowide {
+    padding-top: 94px;
+    width: 70rem;
+  }
+  
   .form__logo {
     max-width: 40%; 
   }
