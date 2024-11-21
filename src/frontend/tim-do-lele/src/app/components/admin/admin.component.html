@@ -1,6 +1,37 @@
+<app-admin-navbar></app-admin-navbar>
 <div class="background"> 
-    <a href="/home"><i class="ri-home-2-fill home__icon"></i></a>
-    <div class="content">
-    <h1>Tela Admin</h1> 
-    <i class="ri-admin-line" id="admin__icon"></i>
+    
+
+     <!-- Tabela de Últimos Pedidos (IMPLEMENTAR)-->
+     <div class="orders-section">
+        <h3 class="orders-title">Últimos Pedidos</h3>
+        <table class="orders-table">
+          <thead>
+            <tr>
+              <th>Pedido</th>
+              <th>ID Cliente</th>
+              <th>Data</th>
+              <th>Valor</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#001</td>
+              <td>12321</td>
+              <td>25/11/2024</td>
+              <td>R$ 29,50</td>
+              <td><input type="checkbox" name="opcao1" value="feito"></td>
+            </tr>
+            <tr>
+              <td>#002</td>
+              <td>31232</td>
+              <td>27/11/2024</td>
+              <td>R$ 27,50</td>
+              <td><input type="checkbox" name="opcao1" value="feito"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
 </div>
