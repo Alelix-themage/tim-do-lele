@@ -284,7 +284,7 @@ a {
 
 /*=============== BREAKPOINTS ===============*/
 /* Telas médias */
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 1200px) {
   .background {
     background-size: cover; /* Garante que a imagem ainda cubra a tela */
     background-attachment: fixed;
@@ -295,7 +295,7 @@ a {
   }
 
   .form__form {
-    width: 432px;
+    width: 400px;
     padding: 2rem 1rem 1.5rem;
     border-radius: 1.5rem;
   }
@@ -303,7 +303,7 @@ a {
   .form__logo {
     display: block;
     margin: 0 auto;
-    max-width: 70%;
+    max-width: 60%;
     height: auto;
   }
 
@@ -315,7 +315,42 @@ a {
     text-align: center;
     font-size: var(--h1-font-size);
     font-weight: var(--font-medium);
-    margin-top: 2rem;
+  }
+
+  .form__register {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .form__submit__button {
+    border: none;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: var(--yellow-color);
+    font-weight: var(--font-medium);
+    font-family: "Poppins", sans-serif;
+    color: black;
+    cursor: pointer;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .form__form {
+    margin-inline: 0.5;
+    padding: 0.5rem 1.5rem;
+  }
+  
+  .form__content {
+    row-gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form__title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: var(--font-medium);
+    margin-top: 1rem;
     margin-bottom: 1rem;
   }
 }
