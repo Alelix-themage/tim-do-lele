@@ -12,14 +12,24 @@ export class CartService {
   public cart$ = this.cartSubject.asObservable();
 
   addToCart(item: Food): void {
-    const existingItem = this.cartItems.find(cartItem => cartItem.ID === item.ID);
+    // Verifica se o lanche já existe no carrinho com os mesmos molhos e observações
+    const existingItem = this.cartItems.find(cartItem => 
+      cartItem.ID === item.ID && 
+      JSON.stringify(cartItem.sauces) === JSON.stringify(item.sauces) && 
+      cartItem.observations === item.observations
+    );
+  
     if (existingItem) {
-      existingItem.QUANTITY = (existingItem.QUANTITY || 1) + 1;
+      // Se o item já existe, garante que QUANTITY seja definida
+      existingItem.QUANTITY = (existingItem.QUANTITY || 0) + 1; // Se não tiver QUANTITY, inicializa como 0 antes de somar
     } else {
+      // Se o item não existir, adiciona com QUANTITY inicializada como 1
       this.cartItems.push({ ...item, QUANTITY: 1 });
     }
+  
     this.cartSubject.next(this.cartItems);
   }
+  
 
   increaseQuantity(item: Food): void {
     const cartItem = this.cartItems.find(cartItem => cartItem.ID === item.ID);

@@ -58,6 +58,13 @@ export class CardFoodComponent implements OnInit {
   openPopup(lanche: Food): void {
     this.selectedLanche = lanche;
     this.isPopupOpen = true;
+    // Resetar os molhos selecionados
+    this.sauces.forEach(sauce => sauce.selected = false);
+
+    // Resetar observações
+    if (this.selectedLanche) {
+      this.selectedLanche.observations = ''; // ou deixar vazio, se for string
+    }
   }
 
   onBackdropClick(event: Event): void {
@@ -71,7 +78,13 @@ export class CardFoodComponent implements OnInit {
 
   addToCart(): void {
     if (this.selectedLanche) {
-      this.cartService.addToCart(this.selectedLanche);
+      const lancheComDetalhes = {
+        ...this.selectedLanche,
+        sauces: this.sauces.filter(sauce => sauce.selected).map(sauce => sauce.name),
+        observations: (document.getElementById('observations') as HTMLTextAreaElement)?.value || ''
+      };
+  
+      this.cartService.addToCart(lancheComDetalhes);
       this.closePopup();
     }
   }

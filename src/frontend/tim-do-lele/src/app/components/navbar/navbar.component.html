@@ -33,8 +33,19 @@
             
               <img class="img-cart" src="assets/img/lanche-p.png" alt="{{ item.NOME }}">
               <div class="content">
-                <h3>{{ item.NOME }}</h3>
+                <h3 class="card-tittle">{{ item.NOME }}</h3>
                 <span class="price">R$ {{ item.PRECO.toFixed(2).replace('.', ',') }}</span>
+                <!-- Exibir molhos -->
+                <p *ngIf="item.sauces" class="sauce-text"> 
+                  <span *ngIf="item.sauces.length > 0" class="sauce-text"> <strong>Molhos: </strong> </span> 
+                  <span *ngFor="let sauce of item.sauces" class="sauce-text">{{ sauce }}; </span>
+                </p>
+
+                <!-- Exibir observação -->
+                <p *ngIf="item.observations" class="observations-text">
+                  <strong>Observação:</strong> {{ item.observations }}
+                </p>
+
                 <div class="quantity-controls">
                     <!-- Se a quantidade for 1, mostrar o ícone de lixeira -->
                     <button *ngIf="(item.QUANTITY ?? 0) === 1" 

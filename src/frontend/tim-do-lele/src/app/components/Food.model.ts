@@ -5,4 +5,6 @@ export interface Food {
     NOME: string;
     PRECO: number;
     QUANTITY?: number;
+    sauces?: string[]; // Molhos selecionados
+    observations?: string; // Observações
 }
