@@ -91,7 +91,7 @@
 
 .search-form {
   position: absolute;
-  top: 110%;
+  top: 120%;
   right: -200%;
   width: 30rem;
   height: 2rem;
@@ -112,6 +112,7 @@
       height: 100%;
       width: 100%;
       background: none;
+      padding-left: 1rem;
       text-transform: none;
       font-size: 1.25rem;
       color: var(--black-color);
@@ -132,7 +133,7 @@
 
 .header .shopping-cart{
   position: absolute;
-  top:110%; right:-200%;
+  top:120%; right:-200%;
   padding:1rem;
   border-radius: .5rem;
   box-shadow: var(--box-shadow);
@@ -150,6 +151,25 @@
   width: 30%;
   height: auto;  
   margin-right: 0.5rem;      
+}
+
+.cart-badge {
+  position: relative;
+  top: 0; /* Alinha no topo */
+  right: 0; /* Alinha à direita */
+  transform: translate(90%, -50%); /* Ajusta a posição para o canto superior direito */
+  background-color: red;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem; /* Reduz o tamanho da fonte */
+  font-weight: bold;
+  width: 1.5rem; /* Define a largura da bolinha */
+  height: 1.5rem; /* Define a altura da bolinha */
+  border-radius: 50%; /* Garante o formato circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
 }
 
 .header .shopping-cart .box{

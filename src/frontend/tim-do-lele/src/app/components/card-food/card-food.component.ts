@@ -17,6 +17,18 @@ export class CardFoodComponent implements OnInit {
   isPopupOpen = false;
   selectedLanche: Food | null = null;
 
+  // Propriedade para controlar a exibição das opções de molhos
+  isSauceOpen = false;
+
+  sauces = [
+    { name: 'Ketchup', selected: false },
+    { name: 'Big Mac', selected: false },
+    { name: 'Mostarda', selected: false },
+    { name: 'Barbecue', selected: false },
+    { name: 'Maionese', selected: false },
+    { name: 'Pimenta', selected: false },
+  ];
+
   constructor(private getFood: GetFoodService, private cartService: CartService) {}
 
   ngOnInit(): void {
@@ -25,20 +37,22 @@ export class CardFoodComponent implements OnInit {
     });
   }
 
-  isSauceOpen = false;
+  // Verifica se todos os molhos estão selecionados
+  get areAllSaucesSelected(): boolean {
+    return this.sauces.every(sauce => sauce.selected);
+  }
+
+  toggleAllSauces(): void {
+    const newState = !this.areAllSaucesSelected;
+    this.sauces.forEach(sauce => (sauce.selected = newState));
+  }
+
+  toggleSauce(sauce: { name: string; selected: boolean }): void {
+    sauce.selected = !sauce.selected;
+  }
 
   toggleSauceOptions(): void {
     this.isSauceOpen = !this.isSauceOpen;
-  
-    // Ajustar a altura do popup dinamicamente (se necessário)
-    const detailsContent = document.querySelector('.details-content') as HTMLElement;
-    if (detailsContent) {
-      if (this.isSauceOpen) {
-        detailsContent.style.height = 'auto'; // Deixa a altura aumentar conforme o conteúdo
-      } else {
-        detailsContent.style.height = ''; // Remove qualquer altura fixa
-      }
-    }
   }
 
   openPopup(lanche: Food): void {
@@ -49,19 +63,16 @@ export class CardFoodComponent implements OnInit {
   onBackdropClick(event: Event): void {
     this.closePopup();
   }
-  
+
   closePopup(): void {
     this.isPopupOpen = false;
     this.selectedLanche = null;
   }
 
-  
-
   addToCart(): void {
     if (this.selectedLanche) {
       this.cartService.addToCart(this.selectedLanche);
       this.closePopup();
-      
     }
   }
 }

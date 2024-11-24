@@ -196,6 +196,11 @@
         margin-bottom: 5px;
     }
 
+    .textarea-container {
+        position: relative; /* Necessário para que o ícone seja posicionado relativo a este elemento */
+        display: flex;
+      }
+
     textarea {
         width: 100%;
         border: 1px solid #ddd;
@@ -213,6 +218,45 @@
         outline: none;
         
     }
+
+
+    
+    /* Contêiner da Textarea */
+.textarea-container {
+    position: relative; /* Necessário para que o ícone seja posicionado relativo a este elemento */
+    display: flex;
+  }
+  
+  /* Estilo da Textarea */
+  textarea {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    resize: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    min-height: 80px;
+    
+  }
+
+  textarea:focus {
+    border-color: var(--yellow-color);
+    outline: none;
+    
+}
+  
+  /* Ícone de Caneta */
+  .icon-pencil {
+    position: absolute;
+    left: 97%; /* Distância do ícone em relação à borda esquerda */
+    top: -12px;
+    width: 35px; /* Largura do ícone */
+    height: 35px; /* Altura do ícone */
+    pointer-events: none; /* Impede que o ícone interfira na interação com o textarea */
+    opacity: 0.7; /* Opacidade para suavizar o ícone */
+  }
+  
 }
 
 

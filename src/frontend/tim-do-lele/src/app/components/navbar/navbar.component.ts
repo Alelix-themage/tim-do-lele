@@ -15,12 +15,14 @@ export class NavbarComponent implements OnInit {
   @ViewChild('cart') cart!: ElementRef;
 
   cartItems: Food[] = [];
+  totalItems: number = 0;
 
   constructor(public cartService: CartService) {}
 
   ngOnInit(): void {
-    this.cartService.cart$.subscribe(items => {
+    this.cartService.cart$.subscribe((items) => {
       this.cartItems = items;
+      this.updateTotalItems();
     });
   }
 
@@ -38,6 +40,16 @@ export class NavbarComponent implements OnInit {
   }
 
   get total(): number {
-    return this.cartItems.reduce((total, item) => total + item.PRECO * (item.QUANTITY || 1), 0);
+    return this.cartItems.reduce(
+      (total, item) => total + item.PRECO * (item.QUANTITY || 1),
+      0
+    );
+  }
+
+  private updateTotalItems(): void {
+    this.totalItems = this.cartItems.reduce(
+      (sum, item) => sum + (item.QUANTITY || 1),
+      0
+    );
   }
 }

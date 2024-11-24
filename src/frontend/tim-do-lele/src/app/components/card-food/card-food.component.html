@@ -26,33 +26,31 @@
           <span [class.rotated]="isSauceOpen">▼</span>
         </button>
         <div class="sauce-options" *ngIf="isSauceOpen">
+          <!-- Opção "Todos" -->
           <label>
-            <input type="checkbox" /> Ketchup
+            <input type="checkbox" [checked]="areAllSaucesSelected" (change)="toggleAllSauces()" /> Todos
           </label>
-          <label>
-            <input type="checkbox" /> Big Mac
-          </label>
-          <label>
-            <input type="checkbox" /> Mostarda
-          </label>
-          <label>
-            <input type="checkbox" /> Barbecue
-          </label>
-          <label>
-            <input type="checkbox" /> Maionese
-          </label>
-          <label>
-            <input type="checkbox" /> Pimenta
+          <!-- Lista de molhos -->
+          <label *ngFor="let sauce of sauces">
+            <input 
+              type="checkbox" 
+              [checked]="sauce.selected" 
+              (change)="toggleSauce(sauce)" 
+            /> 
+            {{ sauce.name }}
           </label>
         </div>
       </div>
-
+      
       <!-- Área de Observações -->
       <div class="observations-section">
         <label for="observations">Observações:</label>
-        <textarea id="observations" rows="3" placeholder="Escreva aqui suas observações..."></textarea>
+        <div class="textarea-container">
+          <textarea id="observations" rows="3" placeholder="Escreva aqui suas observações..."></textarea>
+          <img src="../../../../assets/img/caneta.png" alt="Ícone de Caneta" class="icon-pencil">
+        </div>
       </div>
-
+      
       <!-- Botão de Adicionar ao Carrinho -->
       <button class="btn btn-add-to-cart" (click)="addToCart()">Adicionar ao Carrinho - R$ {{ (selectedLanche?.PRECO || 0).toFixed(2).replace('.', ',') }}</button>
     </div>

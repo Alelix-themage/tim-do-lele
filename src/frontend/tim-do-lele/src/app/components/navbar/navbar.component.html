@@ -9,7 +9,9 @@
     <div class="icons">
         <div class="ri-menu-line" id="menu-btn" (click)="toggleMenu()"></div>
         <div class="ri-search-line" id="search-btn" (click)="toggleSearchForm()"></div>
-        <div class="ri-shopping-cart-line" id="cart-btn" (click)="toggleCart()"></div>
+        <div class="ri-shopping-cart-line" id="cart-btn" (click)="toggleCart()">
+            <span *ngIf="totalItems > 0" class="cart-badge">{{ totalItems }}</span>
+        </div>
         <a href="/perfil">
             <div class="ri-user-line" id="user-btn"></div>
         </a>
