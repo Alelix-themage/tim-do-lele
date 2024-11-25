@@ -57,7 +57,7 @@
     transition: background-color 0.2s;
     width: calc(100% - 20px); /* Ajuste a largura do botão para ocupar quase todo o card */
      /* Margem aos lados e embaixo */
-    position: absolute;
+    position: relative;
     bottom: 10px;
     right: 10px;
 }
@@ -210,7 +210,7 @@
         resize: none;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         min-height: 80px;
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
     }
 
     textarea:focus {
@@ -257,6 +257,22 @@
     opacity: 0.7; /* Opacidade para suavizar o ícone */
   }
   
+}
+
+@media screen and (min-width: 1200px) {
+    textarea {
+        width: 90%;
+    }
+
+    .icon-pencil {
+        position: absolute;
+        left: 70%; /* Distância do ícone em relação à borda esquerda */
+        top: -12px;
+        width: 35px; /* Largura do ícone */
+        height: 35px; /* Altura do ícone */
+        pointer-events: none; /* Impede que o ícone interfira na interação com o textarea */
+        opacity: 0.7; /* Opacidade para suavizar o ícone */
+    }     
 }
 
 
