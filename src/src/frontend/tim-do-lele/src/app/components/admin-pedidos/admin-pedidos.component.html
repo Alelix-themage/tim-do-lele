@@ -1,37 +1,27 @@
 <app-admin-navbar></app-admin-navbar>
 <div class="admin_background"> 
     
-
+<!-- COR 99213A -->
      <!-- Tabela de Últimos Pedidos (IMPLEMENTAR)-->
      <div class="orders-section">
         <h3 class="orders-title">Últimos Pedidos</h3>
-        <table class="orders-table">
-          <thead>
-            <tr>
-              <th>Pedido</th>
-              <th>ID Cliente</th>
-              <th>Data</th>
-              <th>Valor</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>#001</td>
-              <td>12321</td>
-              <td>25/11/2024</td>
-              <td>R$ 29,50</td>
-              <td><input type="checkbox" name="opcao1" value="feito"></td>
-            </tr>
-            <tr>
-              <td>#002</td>
-              <td>31232</td>
-              <td>27/11/2024</td>
-              <td>R$ 27,50</td>
-              <td><input type="checkbox" name="opcao1" value="feito"></td>
-            </tr>
-          </tbody>
-        </table>
+        <section>
+          <div class="dashboard-container">
+      
+              <!-- Ag-Grid para exibir as solicitações -->
+              <ag-grid-angular
+                style=" height: 600px;"
+                class="ag-theme-quartz-dark"
+                [columnDefs]="columnDefs"
+                [rowData]="rowData"
+                [defaultColDef]="{ sortable: true, filter: true }"
+                [gridOptions]="{
+                  localeText: localeText
+                }"
+              >
+              </ag-grid-angular>
+            </div>
+        </section>
       </div>
 
 </div>
