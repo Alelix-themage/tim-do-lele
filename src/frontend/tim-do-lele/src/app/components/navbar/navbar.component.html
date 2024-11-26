@@ -24,58 +24,62 @@
     </form>
 
     <div #cart class="shopping-cart">
-        <div *ngIf="cartItems.length === 0" class="empty-cart-message">
-            Carrinho Vazio
+      <div *ngIf="cartItems.length === 0" class="empty-cart-message">
+        Carrinho Vazio
+      </div>
+    
+      <ng-container *ngIf="cartItems.length > 0">
+        <div class="box" *ngFor="let item of cartItems; let i = index">
+          <!-- Exibição dinâmica da imagem -->
+          <img 
+            class="img-cart" 
+            [src]="'../../../../assets/img/' + item.ID + '.png'" 
+            (error)="handleImgError($event)" 
+            alt="{{ item.NOME }}">
+
+
+          
+          <div class="content">
+            <h3 class="card-title">{{ item.NOME }}</h3>
+            <span class="price">R$ {{ item.PRECO.toFixed(2).replace('.', ',') }}</span>
+    
+            <!-- Exibir molhos -->
+            <p *ngIf="item.sauces" class="sauce-text">
+              <span *ngIf="item.sauces.length > 0"><strong>Molhos:</strong></span>
+              <span *ngFor="let sauce of item.sauces">{{ sauce }}; </span>
+            </p>
+    
+            <!-- Exibir observação -->
+            <p *ngIf="item.observations">
+              <strong>Observação: </strong> {{ item.observations }}
+            </p>
+    
+            <div class="quantity-controls">
+              <!-- Botões para controle de quantidade -->
+              <button *ngIf="(item.QUANTITY ?? 0) === 1"
+                      class="btn-quantity ri-delete-bin-6-line"
+                      (click)="cartService.removeFromCart(item)">
+              </button>
+              <button *ngIf="(item.QUANTITY ?? 0) > 1"
+                      class="btn-quantity"
+                      (click)="cartService.decreaseQuantity(item)">
+                -
+              </button>
+              <span class="quantity-value">{{ item.QUANTITY ?? 0 }}</span>
+              <button class="btn-quantity"
+                      (click)="cartService.increaseQuantity(item)">
+                +
+              </button>
+            </div>
           </div>
-        
-          <ng-container *ngIf="cartItems.length > 0">
-            <div class="box" *ngFor="let item of cartItems">
-            
-              <img class="img-cart" src="assets/img/lanche-p.png" alt="{{ item.NOME }}">
-              <div class="content">
-                <h3 class="card-tittle">{{ item.NOME }}</h3>
-                <span class="price">R$ {{ item.PRECO.toFixed(2).replace('.', ',') }}</span>
-                <!-- Exibir molhos -->
-                <p *ngIf="item.sauces" class="sauce-text"> 
-                  <span *ngIf="item.sauces.length > 0" class="sauce-text"> <strong>Molhos: </strong> </span> 
-                  <span *ngFor="let sauce of item.sauces" class="sauce-text">{{ sauce }}; </span>
-                </p>
-
-                <!-- Exibir observação -->
-                <p *ngIf="item.observations" class="observations-text">
-                  <strong>Observação:</strong> {{ item.observations }}
-                </p>
-
-                <div class="quantity-controls">
-                    <!-- Se a quantidade for 1, mostrar o ícone de lixeira -->
-                    <button *ngIf="(item.QUANTITY ?? 0) === 1" 
-                            class="btn-quantity ri-delete-bin-6-line" 
-                            (click)="cartService.removeFromCart(item)">
-                    </button>
-                    
-                    <!-- Se a quantidade for maior que 1, mostrar o ícone de menos -->
-                    <button *ngIf="(item.QUANTITY ?? 0) > 1" 
-                            class="btn-quantity" 
-                            (click)="cartService.decreaseQuantity(item)">
-                      -
-                    </button>
-                  
-                    <!-- Exibe a quantidade -->
-                    <span class="quantity-value">{{ (item.QUANTITY ?? 0) }}</span>
-                    
-                    <button class="btn-quantity" 
-                            (click)="cartService.increaseQuantity(item)">
-                      +
-                    </button>
-                  </div>
-              </div>
-            </div>
-        
-            <div class="total">
-              Total: R$ {{ total.toFixed(2).replace('.', ',') }}
-            </div>
-        
-            <a href="#" class="btn">Finalizar Compra</a>
-          </ng-container>
+        </div>
+    
+        <div class="total">
+          Total: R$ {{ total.toFixed(2).replace('.', ',') }}
+        </div>
+    
+        <a href="#" class="btn">Finalizar Compra</a>
+      </ng-container>
     </div>
+    
 </header>

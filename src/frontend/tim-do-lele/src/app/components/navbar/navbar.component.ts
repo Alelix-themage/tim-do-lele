@@ -39,6 +39,12 @@ export class NavbarComponent implements OnInit {
     nav?.classList.toggle('active');
   }
 
+  handleImgError(event: Event): void {
+    const imgElement = event.target as HTMLImageElement;
+    imgElement.src = '../../../../assets/img/lanche-p.png'; // Caminho para a imagem padrão
+  }
+  
+
   get total(): number {
     return this.cartItems.reduce(
       (total, item) => total + item.PRECO * (item.QUANTITY || 1),
