@@ -7,6 +7,7 @@ import { TelaCadastroComponent } from './components/tela-cadastro/tela-cadastro.
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TelaInicialComponent } from './components/tela-inicial/tela-inicial.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { AdminPedidosComponent } from './components/admin-pedidos/admin-pedidos.component';
 
 export const routes: Routes = [
     {
@@ -53,4 +54,9 @@ export const routes: Routes = [
         component: PerfilComponent,
         title: "Tim do Lelê - Perfil",
     },
+    {
+        path: "pedidos",
+        component: AdminPedidosComponent,
+        title: "Tim do Lelê - Pedidos",
+    }
 ];

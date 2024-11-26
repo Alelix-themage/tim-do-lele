@@ -147,7 +147,7 @@
   &.active {
     right: 1%; /* Mostra a barra de pesquisa quando ativa */
     transition: 0.3s linear;
-}
+  }
 }
 
 .img-cart{
@@ -343,5 +343,43 @@
 }
 
 @media (max-width: 450px) {
+  .header .shopping-cart{
+    position: absolute;
+    top:100%; right:-200%;
+    padding:1rem;
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    width: 80%;
+    background: #fff;
+    transition: right 0.3s linear;
+    max-height: 80vh; /* Define a altura máxima como 80% da altura da tela */
+    overflow-y: auto; /* Adiciona barra de rolagem vertical se o conteúdo exceder a altura */
+    padding-right: 10px; /* Adiciona espaço extra para o scrollbar */
   
+    &.active {
+      right: 0%; /* Mostra a barra de pesquisa quando ativa */
+      transition: 0.3s linear;
+    }
+  }
+
+  
+  .search-form {
+    position: absolute;
+    top: 120%;
+    right: -200%;
+    width: 90%;
+    height: 2rem;
+    background: #fff;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    box-shadow: var(--box-shadow);
+    transition: right 0.3s linear;
+
+    &.active {
+        right: 1%; /* Mostra a barra de pesquisa quando ativa */
+        transition: 0.3s linear;
+    }
+  }
 }
