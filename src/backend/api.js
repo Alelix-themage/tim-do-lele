@@ -4,6 +4,7 @@ const cors = require('cors')
 const { ConsultarUsers } = require('./query_banco/consulta_cadastro.js');
 const {InserirUser} = require('./query_banco/inserir_cadastro.js')
 const {ConsultarLanches} = require('./query_banco/consulta_lanches.js')
+const {ConsultarPedidos} = require('./query_banco/consulta_pedidos.js')
 
 //módulo de configuração do banco de dados
 const {ConfigBanco} = require('./query_banco/config_banco.js')
@@ -112,6 +113,18 @@ app.post('/enviar-cadastro', async (req, res) => {
     }
 });
 
+
+app.get('/pedidos', async (req, res) => {
+    //Endpoint responsável pelos pedidos
+    try{
+        const pedidos = await ConsultarPedidos();
+        res.status(200).json(pedidos);
+    }
+    catch(erro){
+        console.error("Erro ao consultar a tabela pedidos:", erro);
+        res.status(500).send("Erro ao consultar a tabela pedidos.");
+    }
+});
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);

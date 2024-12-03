@@ -7,14 +7,19 @@
         <h3 class="orders-title">Últimos Pedidos</h3>
         <div class="ag-theme-quartz" style="height: 500px; width: 100%;">
           <ag-grid-angular
-            [rowData]="rowData"
-            [columnDefs]="columnDefs"
-            [localeText]="localeText"
-            [defaultColDef]="{ sortable: true, filter: true, resizable: true }"
-            [pagination]="true"
-            [paginationPageSize]="10">
-          </ag-grid-angular>
+          style=" height: 400px; width: 1200px;"
+          class="ag-theme-quartz-dark"
+          [columnDefs]="columnDefs"
+          [rowData]="rowData"
+          [defaultColDef]="{ sortable: true, filter: true }"
+          [gridOptions]="{
+            localeText: localeText
+          }"
+        >
+        </ag-grid-angular>
+        
         </div>
+        
         
       </div>
 
